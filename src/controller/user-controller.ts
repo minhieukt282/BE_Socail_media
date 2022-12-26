@@ -7,6 +7,10 @@ export class UserController {
     constructor() {
         this.userController = new UserService()
     }
+
+    showFriends = async (req: Request, res: Response) => {
+        let listFriends = await this.userController.getFriends(req.params.username)
+    }
 }
 
 export default new UserController()

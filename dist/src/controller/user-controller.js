@@ -4,6 +4,9 @@ exports.UserController = void 0;
 const user_service_1 = require("../service/user-service");
 class UserController {
     constructor() {
+        this.showFriends = async (req, res) => {
+            let listFriends = await this.userController.getFriends(req.params.username);
+        };
         this.userController = new user_service_1.UserService();
     }
 }
