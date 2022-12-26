@@ -45,7 +45,7 @@ export class LoginService {
         } else {
             let comparePassword = await bcrypt.compare(account.password, findAccount[0].password)
             if (comparePassword) {
-                await this.accountRepo.changeStatus(findAccount[0].username)
+                await this.accountRepo.changeStatus(findAccount[0].username, "true")
                 let payload = {
                     accountId: findAccount[0].accountId,
                     username: findAccount[0].username,
@@ -71,6 +71,13 @@ export class LoginService {
         }
     }
 
-}
+    logout = async (data: any)=>{
+        let findAccount = await this.accountRepo.findByUsername(data.username)
+        await this.accountRepo.changeStatus(findAccount[0].username, "false")
+        return {
+            code: 200,
+            message: "Logout success"
+        }
+    }
 
-export default new LoginService()
+}

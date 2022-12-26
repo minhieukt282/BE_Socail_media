@@ -7,5 +7,5 @@ export declare class AccountRepo {
     del: (id: number) => Promise<void>;
     findById: (id: number) => Promise<any>;
     findByUsername: (username: string) => Promise<any>;
-    changeStatus: (username: string) => Promise<any>;
+    changeStatus: (username: string, status: string) => Promise<any>;
 }

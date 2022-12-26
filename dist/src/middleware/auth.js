@@ -25,19 +25,8 @@ const auth = (req, res, next) => {
                     });
                 }
                 else {
-                    if (data.role === USER) {
-                        req.decode = data;
-                        next();
-                    }
-                    else if (data.role === ADMIN) {
-                        req.decode = data;
-                        next();
-                    }
-                    else {
-                        res.status(401).json({
-                            message: "You are anonymous 3"
-                        });
-                    }
+                    req.decode = data;
+                    next();
                 }
             });
         }

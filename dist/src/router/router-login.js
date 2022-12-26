@@ -11,4 +11,5 @@ exports.routerLogin = (0, express_1.Router)();
 exports.routerLogin.post('/login', login_controller_1.default.login);
 exports.routerLogin.post('/register', login_controller_1.default.register);
 exports.routerLogin.use(auth_1.auth);
+exports.routerLogin.post('/logout', login_controller_1.default.logout);
 //# sourceMappingURL=router-login.js.map
