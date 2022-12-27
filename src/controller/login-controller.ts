@@ -9,8 +9,8 @@ export class LoginController {
     }
 
     login = async (req: Request, res: Response) => {
-        let status = await this.loginController.login(req.body)
-        return res.status(status.code).json({message: status.message})
+        let respBody = await this.loginController.login(req.body)
+        return res.status(respBody.code).json(respBody)
     }
 
     register = async (req: Request, res: Response) => {

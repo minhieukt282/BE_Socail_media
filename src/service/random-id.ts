@@ -1,12 +1,10 @@
 export class RandomId {
-    random = () => {
+    random = (): number => {
         let today = new Date()
-        let time = today.getTime()*Math.floor(Math.random() * 1000);
-        return time
+        return today.getTime() * Math.floor(Math.random() * 1000)
     }
-    today = ()=>{
+    today = (): string => {
         let today = new Date()
-        let day = `${today.getFullYear()}/${today.getMonth()+1}/${today.getDay()}`
-        return day
+        return `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDay()}`
     }
 }
