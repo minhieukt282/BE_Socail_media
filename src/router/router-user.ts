@@ -4,4 +4,8 @@ import {auth} from "../middleware/auth";
 
 export const routerUser = Router()
 // routerUser.use(auth)
-// routerUser.get('/', userController.)
+routerUser.post('/posts', userController.createPost);
+routerUser.get('/posts', userController.showPost);
+routerUser.patch('/posts/:postId', userController.updatePost);
+routerUser.delete('/posts/:postId', userController.deletePost);
+

@@ -13,24 +13,29 @@ export class AccountRepo {
     create = async (newAccount: any) => {
         await this.accountRepo.save(newAccount)
     }
+
     updatePassword = async (newPassword: string, id: number) => {
         let query = `UPDATE account
                      SET password = '${newPassword}'
                      WHERE account_id = ${id}`
         await this.accountRepo.query(query)
     }
+
     updateName = async (newName: string, id: number) => {
         let query = `UPDATE account
                      SET display_name = '${newName}'
                      WHERE account_id = ${id}`
         await this.accountRepo.query(query)
     }
+
     del = async (id: number) => {
         await this.accountRepo.delete(id)
     }
+
     findById = async (id: number) => {
         return await this.accountRepo.findOneById(id)
     }
+
     findByUsername = async (username: string) => {
         return await this.accountRepo.find({
             where: {
@@ -38,6 +43,7 @@ export class AccountRepo {
             }
         })
     }
+
     changeStatus = async (username: string, status: string) => {
         let query = `update account
                      set status = ${status}

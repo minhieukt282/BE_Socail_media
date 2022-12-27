@@ -5,24 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9481f351-4592-412f-ba57-a6091ea9f6b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/repo/postRepo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/controller/login-controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controller/login-controller.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/controller/login-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controller/login-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/controller/login-controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controller/login-controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repo/accountRepo.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repo/accountRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repo/accountRepo.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/router/router-login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/router/router-login.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/service/login-service.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/service/login-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/service/login-service.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/login-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/login-controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/login-controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/login-controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/login-controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/user-controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/user-controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/user-controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/data-source.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/data-source.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/data-source.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/middleware/auth.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/middleware/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/middleware/auth.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/account.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/account.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/account.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/comment.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/comment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/comment.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/post.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/post.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/relationship.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/relationship.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/model/relationship.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-user.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-user.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/random-id.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/random-id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/random-id.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/user-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/user-controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repo/accountRepo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repo/accountRepo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/router-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router-login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/login-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/login-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/router-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router-user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/user-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/user-service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,14 +92,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/test/Md6/BE_Social_Media/public/storage",
+    "last_opened_file_path": "C:/Users/thien/Case_MD5_BE",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "E:\\test\\Md6\\BE_Social_Media\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\thien\\code\\BE_Socail_media\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -106,5 +145,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
