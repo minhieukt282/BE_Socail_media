@@ -17,6 +17,10 @@ export class LoginController {
         let status = await this.loginController.register(req.body)
         return res.status(status.code).json({message: status.message})
     }
+    logout = async (req: Request, res: Response) => {
+        let status = await this.loginController.logout(req.body)
+        return res.status(status.code).json({message: status.message})
+    }
 }
 
 export default new LoginController()

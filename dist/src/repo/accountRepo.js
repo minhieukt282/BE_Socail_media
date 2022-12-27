@@ -33,9 +33,9 @@ class AccountRepo {
                 }
             });
         };
-        this.changeStatus = async (username) => {
+        this.changeStatus = async (username, status) => {
             let query = `update account
-                     set status = true
+                     set status = ${status}
                      where username = '${username}'`;
             return await this.accountRepo.query(query);
         };

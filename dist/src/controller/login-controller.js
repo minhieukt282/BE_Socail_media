@@ -12,6 +12,10 @@ class LoginController {
             let status = await this.loginController.register(req.body);
             return res.status(status.code).json({ message: status.message });
         };
+        this.logout = async (req, res) => {
+            let status = await this.loginController.logout(req.body);
+            return res.status(status.code).json({ message: status.message });
+        };
         this.loginController = new login_service_1.LoginService();
     }
 }

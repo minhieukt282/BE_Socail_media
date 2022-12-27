@@ -17,6 +17,8 @@ export declare class LoginService {
             display_name: any;
         };
     }>;
+    logout: (data: any) => Promise<{
+        code: number;
+        message: string;
+    }>;
 }
-declare const _default: LoginService;
-export default _default;

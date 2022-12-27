@@ -8,5 +8,4 @@ class UserService {
     }
 }
 exports.UserService = UserService;
-exports.default = new UserService();
 //# sourceMappingURL=user-service.js.map

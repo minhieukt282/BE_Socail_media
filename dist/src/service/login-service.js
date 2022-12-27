@@ -43,7 +43,7 @@ class LoginService {
             else {
                 let comparePassword = await bcrypt_1.default.compare(account.password, findAccount[0].password);
                 if (comparePassword) {
-                    await this.accountRepo.changeStatus(findAccount[0].username);
+                    await this.accountRepo.changeStatus(findAccount[0].username, "true");
                     let payload = {
                         accountId: findAccount[0].accountId,
                         username: findAccount[0].username,
@@ -69,10 +69,17 @@ class LoginService {
                 }
             }
         };
+        this.logout = async (data) => {
+            let findAccount = await this.accountRepo.findByUsername(data.username);
+            await this.accountRepo.changeStatus(findAccount[0].username, "false");
+            return {
+                code: 200,
+                message: "Logout success"
+            };
+        };
         this.accountRepo = new accountRepo_1.AccountRepo();
         this.randomId = new random_id_1.RandomId();
     }
 }
 exports.LoginService = LoginService;
-exports.default = new LoginService();
 //# sourceMappingURL=login-service.js.map
