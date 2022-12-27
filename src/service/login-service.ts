@@ -2,16 +2,15 @@ import {AccountRepo} from "../repo/accountRepo";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 import {SECRET} from "../middleware/auth";
-import {RandomId} from "./random-id";
-import {Account} from "../model/account";
+import {Random} from "./random";
 
 export class LoginService {
     private accountRepo: AccountRepo
-    private randomId: RandomId
+    private random: Random
 
     constructor() {
         this.accountRepo = new AccountRepo()
-        this.randomId = new RandomId()
+        this.random = new Random()
     }
 
     register = async (data: AccountRequest): Promise<ResponseBody> => {
@@ -23,9 +22,9 @@ export class LoginService {
             }
         } else {
             data.password = await bcrypt.hash(data.password, 10)
-            data.accountId = this.randomId.random()
+            data.accountId = this.random.randomNumber()
             data.img = '../../public/storage/images.jpg'
-            data.birthday = this.randomId.today()
+            data.birthday = this.random.randomTime()
             const account = await this.accountRepo.create(data)
             return {
                 code: 201,
@@ -38,19 +37,19 @@ export class LoginService {
 
     login = async (account: LoginRequest): Promise<ResponseBody> => {
         let findAccount = await this.accountRepo.findByUsername(account.username)
-        if (findAccount == null) {
+        if (findAccount[0] == null) {
             return {
                 code: 404,
                 message: "Account is not defined"
             }
         } else {
-            let comparePassword = await bcrypt.compare(account.password, findAccount.password)
+            let comparePassword = await bcrypt.compare(account.password, findAccount[0].password)
             if (comparePassword) {
-                await this.accountRepo.changeStatus(findAccount.username, true)
+                await this.accountRepo.changeStatus(findAccount[0].username, true)
                 let payload = {
-                    accountId: findAccount.accountId,
-                    username: findAccount.username,
-                    status: findAccount.status
+                    accountId: findAccount[0].accountId,
+                    username: findAccount[0].username,
+                    status: findAccount[0].status
                 }
                 let token = jwt.sign(payload, SECRET, {
                     expiresIn: 7 * 24 * 60 * 60 * 1000
@@ -60,8 +59,8 @@ export class LoginService {
                     message: 'success',
                     data: {
                         token: token,
-                        accountId: findAccount.accountId,
-                        displayName: findAccount.displayName
+                        accountId: findAccount[0].accountId,
+                        displayName: findAccount[0].displayName
                     }
                 }
             } else {
@@ -73,9 +72,9 @@ export class LoginService {
         }
     }
 
-    logout = async (data: AccountRequest)=>{
+    logout = async (data: AccountRequest): Promise<ResponseBody> => {
         let findAccount = await this.accountRepo.findByUsername(data.username)
-        await this.accountRepo.changeStatus(findAccount.username, false)
+        await this.accountRepo.changeStatus(findAccount[0].username, false)
         return {
             code: 200,
             message: "Logout success"

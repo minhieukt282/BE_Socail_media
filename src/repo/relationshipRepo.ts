@@ -10,7 +10,7 @@ export class RelationshipRepo {
         })
     }
 
-    findAll = async (id: string) => {
+    findAll = async (id: string): Promise<Relationship> => {
         return await this.relationshipRepo.find({where: {accountIdOne: id}})
     }
 

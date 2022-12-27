@@ -2,14 +2,15 @@ import {UserService} from "../service/user-service";
 import {Request, Response} from "express";
 
 export class UserController {
-    private userController: UserService
+    private userService: UserService
 
     constructor() {
-        this.userController = new UserService()
+        this.userService = new UserService()
     }
 
-    showFriends = async (req: Request, res: Response) => {
-        let listFriends = await this.userController.getFriends(req.params.username)
+    showFriends = async (req: Request, res: Response): Promise<string | any> => {
+        let respBody = await this.userService.getFriends(req.params.username)
+        return res.status(respBody.code).json(respBody)
     }
 }
 

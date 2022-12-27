@@ -25,11 +25,12 @@ export class AccountRepo {
                      WHERE account_id = ${id}`
         await this.accountRepo.query(query)
     }
-    del = async (id: number) => {
+    del = async (id: number): Promise<string> => {
         await this.accountRepo.delete(id)
+        return "delete done"
     }
 
-    findById = async (id: number) => {
+    findById = async (id: number): Promise<Account> => {
         return await this.accountRepo.findOneById(id)
     }
 
