@@ -1,4 +1,3 @@
-
 import {RandomId} from "./random-id";
 import {PostRepo} from "../repo/postRepo";
 
@@ -10,32 +9,39 @@ export class UserService {
         this.randomId = new RandomId()
         this.postRepo = new PostRepo()
     }
-    create = async (data: any)=>{
+
+    create = async (data: PostsRequest): Promise<ResponseBody> => {
         data.postId = this.randomId.random();
         data.timeUpdate = this.randomId.today()
-        await this.postRepo.create(data)
-        return{
-            code: 201,
-            message:"create ok"
-        }
-    }
-    showPost = async ()=>{
-        let post = await this.postRepo.find()
-        return post
-    }
-    updatePost = async (idEdit,post)=>{
-       let posts =  await this.postRepo.update(idEdit,post)
-        return{
-            message:"edit ok",
-            posts
-        }
-    }
-    deletePost = async (postId)=>{
-        console.log(postId)
-        let posts =await this.postRepo.delete(postId);
+        let message = await this.postRepo.create(data)
         return {
-            message:"delete ok",
-            posts
+            code: 201,
+            message: message
+        }
+    }
+
+    showPost = async (): Promise<ResponseBody> => {
+        let posts = await this.postRepo.find()
+        return {
+            code: 200,
+            message: "Success",
+            data: posts
+        }
+    }
+
+    updatePost = async (postId: number, data: PostsRequest): Promise<ResponseBody> => {
+        let message = await this.postRepo.update(postId, data)
+        return {
+            code: 200,
+            message: message
+        }
+    }
+
+    deletePost = async (postId): Promise<ResponseBody> => {
+        let message = await this.postRepo.delete(postId);
+        return {
+            code: 200,
+            message: message
         }
     }
 }

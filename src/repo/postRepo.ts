@@ -1,28 +1,31 @@
 import {AppDataSource} from "../data-source";
 import {Post} from "../model/post";
 
-
-export class PostRepo{
+export class PostRepo {
     private postRepo: any
 
     constructor() {
-        AppDataSource.initialize().then(connection =>{
+        AppDataSource.initialize().then(connection => {
             this.postRepo = connection.getRepository(Post)
         })
     }
 
-    create = async (newPost: any)=>{
+    create = async (newPost: PostsRequest): Promise<string> => {
         await this.postRepo.save(newPost)
+        return "Create done"
     }
-    find = async ()=>{
-        let query = 'select * from posts '
-       let post = await this.postRepo.find(query)
-        return post
+
+    find = async (): Promise<PostRepo> => {
+        return await this.postRepo.find()
     }
-    update= async (idEdit:number,post)=>{
-       await this.postRepo.update({postId:idEdit},post)
+
+    update = async (postId: number, data: PostsRequest): Promise<string> => {
+        await this.postRepo.update({postId: postId}, data)
+        return "Update done"
     }
-    delete = async (id: number)=>{
-        await this.postRepo.delete(id)
+
+    delete = async (postId: number): Promise<string> => {
+        await this.postRepo.delete(postId)
+        return "Delete done"
     }
 }

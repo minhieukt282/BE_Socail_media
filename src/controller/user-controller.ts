@@ -2,27 +2,26 @@ import {UserService} from "../service/user-service";
 import {Request, Response} from "express";
 
 export class UserController {
-    private userController: UserService
+    private userService: UserService
 
     constructor() {
-        this.userController = new UserService()
+        this.userService = new UserService()
     }
-    createPost= async (req:Request,res:Response)=>{
-        let status = await this.userController.create(req.body)
-        return res.status(status.code).json({message: status.message})
+
+    createPost = async (req: Request, res: Response): Promise<string | any> => {
+        let respBody = await this.userService.create(req.body)
+        return res.status(respBody.code).json(respBody)
     }
-    showPost = async (req:Request,res:Response)=>{
-        let post = await this.userController.showPost();
-        return res.status(201).json(post);
+    showPost = async (req: Request, res: Response): Promise<string | any> => {
+        let respBody = await this.userService.showPost();
+        return res.status(respBody.code).json(respBody);
     }
-    updatePost = async (req:Request,res:Response)=>{
-        let idEdit= +req.params.postId;
-        let post = req.body;
-        let posts = await this.userController.updatePost(idEdit,post)
-        return res.status(201).json(posts)
+    updatePost = async (req: Request, res: Response): Promise<string | any> => {
+        let respBody = await this.userService.updatePost(+req.params.postId, req.body)
+        return res.status(respBody.code).json(respBody)
     }
-    deletePost = async (req:Request,res:Response)=>{
-        let posts =await this.userController.deletePost(+req.params.postId);
+    deletePost = async (req: Request, res: Response): Promise<string | any> => {
+        let posts = await this.userService.deletePost(+req.params.postId);
         return res.status(200).json(posts)
     }
 }
