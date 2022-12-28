@@ -13,18 +13,13 @@ export class AccountRepo {
     create = async (newAccount: any): Promise<Account> => {
         return await this.accountRepo.save(newAccount)
     }
-    updatePassword = async (newPassword: string, id: number) => {
-        let query = `UPDATE account
-                     SET password = '${newPassword}'
-                     WHERE account_id = ${id}`
-        await this.accountRepo.query(query)
+
+    update = async (username: string, data: any): Promise<void> => {
+        const userUpdate = await this.findByUsername(username)
+        userUpdate[0].status = data
+        await this.accountRepo.save(userUpdate)
     }
-    updateName = async (newName: string, id: number) => {
-        let query = `UPDATE account
-                     SET display_name = '${newName}'
-                     WHERE account_id = ${id}`
-        await this.accountRepo.query(query)
-    }
+
     del = async (id: number): Promise<string> => {
         await this.accountRepo.delete(id)
         return "delete done"
@@ -41,11 +36,4 @@ export class AccountRepo {
             }
         })
     }
-    changeStatus = async (username: string, status: boolean): Promise<void> => {
-        let query = `update account
-                     set status = ${status}
-                     where username = '${username}'`
-        await this.accountRepo.query(query)
-    }
-
 }

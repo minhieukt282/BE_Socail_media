@@ -15,7 +15,7 @@ export class LoginService {
 
     register = async (data: AccountRequest): Promise<ResponseBody> => {
         let findAccount = await this.accountRepo.findByUsername(data.username)
-        if (findAccount != null) {
+        if (findAccount[0] != undefined) {
             return {
                 code: 409,
                 message: "Account already exists"
@@ -32,7 +32,6 @@ export class LoginService {
                 data: account
             }
         }
-
     }
 
     login = async (account: LoginRequest): Promise<ResponseBody> => {
@@ -45,7 +44,7 @@ export class LoginService {
         } else {
             let comparePassword = await bcrypt.compare(account.password, findAccount[0].password)
             if (comparePassword) {
-                await this.accountRepo.changeStatus(findAccount[0].username, true)
+                await this.accountRepo.update(findAccount[0].username, true)
                 let payload = {
                     accountId: findAccount[0].accountId,
                     username: findAccount[0].username,
@@ -74,11 +73,10 @@ export class LoginService {
 
     logout = async (data: AccountRequest): Promise<ResponseBody> => {
         let findAccount = await this.accountRepo.findByUsername(data.username)
-        await this.accountRepo.changeStatus(findAccount[0].username, false)
+        await this.accountRepo.update(findAccount[0].username, false)
         return {
             code: 200,
             message: "Logout success"
         }
     }
-
 }
