@@ -20,15 +20,15 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
-], Relationship.prototype, "accountIdOne", void 0);
+], Relationship.prototype, "accountReq", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'bigint' }),
     __metadata("design:type", Number)
-], Relationship.prototype, "accountIdTwo", void 0);
+], Relationship.prototype, "accountRes", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "boolean", default: false }),
     __metadata("design:type", Boolean)
-], Relationship.prototype, "status", void 0);
+], Relationship.prototype, "isAccept", void 0);
 Relationship = __decorate([
     (0, typeorm_1.Entity)({ name: 'relationship' })
 ], Relationship);

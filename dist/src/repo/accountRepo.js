@@ -6,22 +6,16 @@ const account_1 = require("../model/account");
 class AccountRepo {
     constructor() {
         this.create = async (newAccount) => {
-            await this.accountRepo.save(newAccount);
+            return await this.accountRepo.save(newAccount);
         };
-        this.updatePassword = async (newPassword, id) => {
-            let query = `UPDATE account
-                     SET password = '${newPassword}'
-                     WHERE account_id = ${id}`;
-            await this.accountRepo.query(query);
-        };
-        this.updateName = async (newName, id) => {
-            let query = `UPDATE account
-                     SET display_name = '${newName}'
-                     WHERE account_id = ${id}`;
-            await this.accountRepo.query(query);
+        this.update = async (username, data) => {
+            const userUpdate = await this.findByUsername(username);
+            userUpdate[0].status = data;
+            await this.accountRepo.save(userUpdate);
         };
         this.del = async (id) => {
             await this.accountRepo.delete(id);
+            return "delete done";
         };
         this.findById = async (id) => {
             return await this.accountRepo.findOneById(id);
@@ -32,12 +26,6 @@ class AccountRepo {
                     username: username
                 }
             });
-        };
-        this.changeStatus = async (username, status) => {
-            let query = `update account
-                     set status = ${status}
-                     where username = '${username}'`;
-            return await this.accountRepo.query(query);
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.accountRepo = connection.getRepository(account_1.Account);

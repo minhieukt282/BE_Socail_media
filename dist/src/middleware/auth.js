@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.auth = exports.SECRET = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 exports.SECRET = '19!12';
-let USER = 'user';
-let ADMIN = 'admin';
 const auth = (req, res, next) => {
     let authorization = req.headers.authorization;
     if (authorization) {

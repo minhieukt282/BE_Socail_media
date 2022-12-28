@@ -1,11 +1,10 @@
+import { Account } from "../model/account";
 export declare class AccountRepo {
     private accountRepo;
     constructor();
-    create: (newAccount: any) => Promise<void>;
-    updatePassword: (newPassword: string, id: number) => Promise<void>;
-    updateName: (newName: string, id: number) => Promise<void>;
-    del: (id: number) => Promise<void>;
-    findById: (id: number) => Promise<any>;
-    findByUsername: (username: string) => Promise<any>;
-    changeStatus: (username: string, status: string) => Promise<any>;
+    create: (newAccount: any) => Promise<Account>;
+    update: (username: string, data: any) => Promise<void>;
+    del: (id: number) => Promise<string>;
+    findById: (id: number) => Promise<Account>;
+    findByUsername: (username: string) => Promise<Account>;
 }

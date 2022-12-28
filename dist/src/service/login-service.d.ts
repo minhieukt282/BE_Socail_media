@@ -1,24 +1,8 @@
 export declare class LoginService {
     private accountRepo;
-    private randomId;
+    private random;
     constructor();
-    register: (data: any) => Promise<{
-        code: number;
-        message: string;
-    }>;
-    login: (data: any) => Promise<{
-        code: number;
-        message: string;
-    } | {
-        code: number;
-        message: {
-            token: string;
-            accountId: any;
-            display_name: any;
-        };
-    }>;
-    logout: (data: any) => Promise<{
-        code: number;
-        message: string;
-    }>;
+    register: (data: AccountRequest) => Promise<ResponseBody>;
+    login: (account: LoginRequest) => Promise<ResponseBody>;
+    logout: (data: AccountRequest) => Promise<ResponseBody>;
 }
