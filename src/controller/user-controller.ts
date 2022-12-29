@@ -8,29 +8,51 @@ export class UserController {
         this.userService = new UserService()
     }
 
-    showFriends = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.userService.showFriends(+req.params.accountId)
-        return res.status(respBody.code).json(respBody)
+    showFriends = async (req: Request | any, res: Response): Promise<void> => {
+        try {
+            let accountId = req.decode.accountId
+            let respBody = await this.userService.showFriends(accountId)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    makeFriend = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.userService.makeFriend(req.body)
-        return res.status(respBody.code).json(respBody)
+    makeFriend = async (req: Request | any, res: Response): Promise<void> => {
+        try {
+            let accountId = req.decode.accountId
+            let respBody = await this.userService.makeFriend(accountId, req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    waitingFriends = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.userService.waitingFriends(+req.params.accountRes)
-        return res.status(respBody.code).json(respBody)
+    waitingFriends = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.waitingFriends(+req.params.accountRes)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    acceptFriend = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.userService.acceptFriend(+req.params.relationshipId)
-        return res.status(respBody.code).json(respBody)
+    acceptFriend = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.acceptFriend(+req.params.relationshipId)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    declineFriend = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.userService.declineFriend(+req.params.relationshipId)
-        return res.status(respBody.code).json(respBody)
+    declineFriend = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.declineFriend(+req.params.relationshipId)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 }
 

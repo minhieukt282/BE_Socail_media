@@ -8,19 +8,31 @@ export class LoginController {
         this.loginService = new LoginService()
     }
 
-    login = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.loginService.login(req.body)
-        return res.status(respBody.code).json(respBody)
+    login = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.loginService.login(req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    register = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.loginService.register(req.body)
-        return res.status(respBody.code).json(respBody)
+    register = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.loginService.register(req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    logout = async (req: Request, res: Response): Promise<string | any> => {
-        let respBody = await this.loginService.logout(req.body)
-        return res.status(respBody.code).json(respBody)
+    logout = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.loginService.logout(req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 }
 

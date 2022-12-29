@@ -9,13 +9,13 @@ export class Account {
     @Column({type: 'text'})
     public password: string
     @Column({type: "varchar", default: 'username'})
-    public displayName : string
+    public displayName: string
     @Column({type: "text"})
-    public img : string
+    public img: string
     @Column({type: "date"})
-    public birthday : Date
+    public birthday: Date
     @Column({type: "varchar", default: "Hanoi"})
-    public location : string
+    public location: string
     @Column({type: "boolean", default: false})
-    public status : boolean
+    public status: boolean
 }

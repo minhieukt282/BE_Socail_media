@@ -1080,174 +1080,225 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="314" parent="302" name="post">
+    <table id="314" parent="302" name="notification">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="315" parent="302" name="relationship">
+    <table id="315" parent="302" name="post">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="316" parent="312" name="accountId">
-      <AutoIncrement>625353229514531</AutoIncrement>
+    <table id="316" parent="302" name="relationship">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="317" parent="312" name="accountId">
+      <AutoIncrement>1434842172084751</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="317" parent="312" name="username">
+    <column id="318" parent="312" name="username">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="318" parent="312" name="password">
+    <column id="319" parent="312" name="password">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="319" parent="312" name="displayName">
+    <column id="320" parent="312" name="displayName">
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;username&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="320" parent="312" name="img">
+    <column id="321" parent="312" name="img">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="321" parent="312" name="birthday">
+    <column id="322" parent="312" name="birthday">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="322" parent="312" name="location">
+    <column id="323" parent="312" name="location">
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;Hanoi&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="323" parent="312" name="status">
+    <column id="324" parent="312" name="status">
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <index id="324" parent="312" name="PRIMARY">
+    <index id="325" parent="312" name="PRIMARY">
       <ColNames>accountId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="325" parent="312" name="PRIMARY">
+    <key id="326" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="326" parent="313" name="commentId">
+    <column id="327" parent="313" name="commentId">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="327" parent="313" name="postId">
+    <column id="328" parent="313" name="postId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="328" parent="313" name="accountId">
+    <column id="329" parent="313" name="accountId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="329" parent="313" name="content">
+    <column id="330" parent="313" name="content">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="330" parent="313" name="timeUpdate">
+    <column id="331" parent="313" name="timeUpdate">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <index id="331" parent="313" name="PRIMARY">
+    <index id="332" parent="313" name="PRIMARY">
       <ColNames>commentId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="332" parent="313" name="PRIMARY">
+    <key id="333" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="333" parent="314" name="postId">
+    <column id="334" parent="314" name="notificationId">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="334" parent="314" name="accountId">
+    <column id="335" parent="314" name="accountId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="335" parent="314" name="img">
-      <DataType>text|0s</DataType>
+    <column id="336" parent="314" name="contentId">
+      <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="336" parent="314" name="content">
+    <column id="337" parent="314" name="content">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="337" parent="314" name="timeUpdate">
+    <column id="338" parent="314" name="time">
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="338" parent="314" name="status">
+    <column id="339" parent="314" name="type">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="340" parent="314" name="status">
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <index id="341" parent="314" name="PRIMARY">
+      <ColNames>notificationId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="342" parent="314" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="343" parent="315" name="postId">
+      <AutoIncrement>1586928955693342</AutoIncrement>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="344" parent="315" name="accountId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="345" parent="315" name="img">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="346" parent="315" name="content">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="347" parent="315" name="timeUpdate">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="348" parent="315" name="status">
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;public&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="339" parent="314" name="PRIMARY">
+    <index id="349" parent="315" name="PRIMARY">
       <ColNames>postId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="340" parent="314" name="PRIMARY">
+    <key id="350" parent="315" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="341" parent="315" name="relationshipId">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="351" parent="316" name="relationshipId">
+      <AutoIncrement>1446449097224666</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="342" parent="315" name="accountReq">
+    <column id="352" parent="316" name="accountReq">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="343" parent="315" name="accountRes">
+    <column id="353" parent="316" name="accountRes">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="344" parent="315" name="isAccept">
+    <column id="354" parent="316" name="isAccept">
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <index id="345" parent="315" name="PRIMARY">
+    <index id="355" parent="316" name="PRIMARY">
       <ColNames>relationshipId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="346" parent="315" name="PRIMARY">
+    <key id="356" parent="316" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

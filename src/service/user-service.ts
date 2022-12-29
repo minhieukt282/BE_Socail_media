@@ -36,8 +36,8 @@ export class UserService {
         }
     }
 
-    makeFriend = async (data: FriendsRequest): Promise<ResponseBody> => {
-        data.accountReq = +data.accountReq
+    makeFriend = async (accountId: number, data: FriendsRequest): Promise<ResponseBody> => {
+        data.accountReq = accountId
         data.accountRes = +data.accountRes
         data.relationshipId = this.random.randomNumber()
         data.isAccept = false

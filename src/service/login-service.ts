@@ -13,11 +13,15 @@ export class LoginService {
         this.random = new Random()
     }
 
+    tokenLife = (days: number)=>{
+        return days * 24 * 60 * 60 * 1000
+    }
+
     register = async (data: AccountRequest): Promise<ResponseBody> => {
         let findAccount = await this.accountRepo.findByUsername(data.username)
         if (findAccount[0] != undefined) {
             return {
-                code: 409,
+                code: 200,
                 message: "Account already exists"
             }
         } else {
@@ -38,7 +42,7 @@ export class LoginService {
         let findAccount = await this.accountRepo.findByUsername(account.username)
         if (findAccount[0] == null) {
             return {
-                code: 404,
+                code: 200,
                 message: "Account is not defined"
             }
         } else {
@@ -46,12 +50,10 @@ export class LoginService {
             if (comparePassword) {
                 await this.accountRepo.update(findAccount[0].username, true)
                 let payload = {
-                    accountId: findAccount[0].accountId,
-                    username: findAccount[0].username,
-                    status: findAccount[0].status
+                    accountId: findAccount[0].accountId
                 }
                 let token = jwt.sign(payload, SECRET, {
-                    expiresIn: 7 * 24 * 60 * 60 * 1000
+                    expiresIn: this.tokenLife(7)
                 })
                 return {
                     code: 200,
