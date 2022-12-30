@@ -54,6 +54,56 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
+    createPost = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.create(req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    showPost = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.showPost();
+            res.status(respBody.code).json(respBody);
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    updatePost = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.updatePost(+req.params.postId, req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    deletePost = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.deletePost(+req.params.postId);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    createNotification = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.createNotification(req.body);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    showNotification = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.showNotification();
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
 }
 
 export default new UserController()

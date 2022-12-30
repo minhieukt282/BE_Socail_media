@@ -4,8 +4,12 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 export class Notification {
     @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly notificationId: number
+    @Column({type: 'varchar'})
+    public displayName: string
     @Column({type: 'bigint'})
-    public accountId: number
+    public accountSent: number
+    @Column({type: 'bigint'})
+    public accountReceiver: number
     @Column({type: 'bigint'})
     public contentId: number
     @Column({type: 'text'})

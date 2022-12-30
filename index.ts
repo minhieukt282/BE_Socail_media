@@ -5,6 +5,7 @@ import fileUpload from 'express-fileupload';
 import cors from "cors";
 import {router} from "./src/router/router";
 import {Server} from "socket.io"
+import {LoginService} from "./src/service/login-service";
 
 const app = express()
 const io = new Server({
@@ -24,19 +25,30 @@ app.use('', router)
 
 //==================================SOCKET IO===============
 
+const service = new LoginService()
+
 io.on("connection", (socket) => {
-    console.log(`User connect: ${socket.id}`)
-    socket.on("join_room", (data) => {
-        socket.join(data)
+    socket.on('online', async (data) => {
+        await service.createSocket(data.accountId, socket.id)
     })
-    socket.on("send_message", (data) => {
-        console.log(data)
-        // socket.broadcast.emit("receive_message", data)
-        if (data.id == 123456) {
-            io.to(data.room).emit("receive_message", data)
+
+    socket.on('refresh', async (data) => {
+        console.log("socket id:", socket.id, data)
+        await service.updateSocket(data.accountId, socket.id)
+    })
+
+    socket.on('liked', async (data) => {
+        const socketId = await service.findSocket(+data.accountReceiver)
+        if (data.accountSent !== data.accountReceiver) {
+            io.to(`${socketId.socketId}`).emit("getNotification", {
+                message: `${data.displayName} like status`
+            });
         }
     })
 
+    socket.on("disconnect", async () => {
+
+    });
 });
 io.listen(5000);
 

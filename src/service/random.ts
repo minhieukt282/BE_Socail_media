@@ -3,8 +3,8 @@ export class Random {
         let today = new Date()
         return today.getTime() * Math.floor(Math.random() * 1000)
     }
-    randomTime = (): string => {
+    getTime = (): string => {
         let today = new Date()
-        return `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDay()}`
+        return `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`
     }
 }

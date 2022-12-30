@@ -36,4 +36,11 @@ export class AccountRepo {
             }
         })
     }
+    changeStatus = async (username: string, status: string) => {
+        let query = `update account
+                     set status = ${status}
+                     where username = '${username}'`
+        return await this.accountRepo.query(query)
+    }
+
 }

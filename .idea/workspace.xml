@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9481f351-4592-412f-ba57-a6091ea9f6b9" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/model/notification.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_12_2022_23_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_12_2022_23_03__Changes_.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/repo/postRepo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" afterDir="false" />
+>>>>>>> origin/hanhim
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" />
@@ -39,9 +45,12 @@
       <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/repo/accountRepo.js.map" beforeDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/dist/src/repo/relationshipRepo.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/repo/relationshipRepo.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/repo/relationshipRepo.js.map" beforeDir="false" />
+=======
+>>>>>>> origin/hanhim
       <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/router/router-login.js.map" beforeDir="false" />
@@ -54,10 +63,17 @@
       <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/service/login-service.js.map" beforeDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/dist/src/service/random-id.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/random-id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/random-id.js.map" beforeDir="false" />
+>>>>>>> origin/hanhim
       <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -67,6 +83,11 @@
       <change beforePath="$PROJECT_DIR$/src/model/account.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/account.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/router-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router-user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/login-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/login-service.ts" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/controller/user-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/user-controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repo/accountRepo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repo/accountRepo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/router-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router-user.ts" afterDir="false" />
+>>>>>>> origin/hanhim
       <change beforePath="$PROJECT_DIR$/src/service/user-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/user-service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,6 +119,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -112,6 +134,22 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\test\\Md6\\BE_Social_Media\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/thien/Case_MD5_BE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\thien\\code\\BE_Socail_media\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> origin/hanhim
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
