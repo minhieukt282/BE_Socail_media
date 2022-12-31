@@ -5,14 +5,9 @@ import fileUpload from 'express-fileupload';
 import cors from "cors";
 import {router} from "./src/router/router";
 import {Server} from "socket.io"
-import {LoginService} from "./src/service/login-service";
+import {SocketService} from "./src/service/socket-Service"
 
 const app = express()
-const io = new Server({
-    cors: {
-        origin: "http://localhost:3000"
-    }
-})
 app.use(express.json())
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -23,35 +18,50 @@ app.use(fileUpload({
 }));
 app.use('', router)
 
-//==================================SOCKET IO===============
-
-const service = new LoginService()
+//==================================SOCKET IO==================================
+const io = new Server({
+    cors: {
+        origin: "http://localhost:3000"
+    }
+})
+const socketService = new SocketService()
 
 io.on("connection", (socket) => {
     socket.on('online', async (data) => {
-        await service.createSocket(data.accountId, socket.id)
+        await socketService.createSocket(data.accountId, socket.id)
     })
 
     socket.on('refresh', async (data) => {
-        console.log("socket id:", socket.id, data)
-        await service.updateSocket(data.accountId, socket.id)
+        console.log("socket id:", socket.id, "account id:", data.accountId)
+        await socketService.updateSocket(data.accountId, socket.id)
     })
 
     socket.on('liked', async (data) => {
-        const socketId = await service.findSocket(+data.accountReceiver)
-        if (data.accountSent !== data.accountReceiver) {
+        const socketId = await socketService.findSocket(+data.accountReceiver)
+        if (data.accountSent !== data.accountReceiver && socketId != null) {
             io.to(`${socketId.socketId}`).emit("getNotification", {
-                message: `${data.displayName} like status`
+                message: `${data.displayName} liked your status`
             });
         }
     })
 
-    socket.on("disconnect", async () => {
+    socket.on('commented', async (data) => {
+        const socketId = await socketService.findSocket(+data.accountReceiver)
+        if (data.accountSent !== data.accountReceiver && socketId != null) {
+            io.to(`${socketId.socketId}`).emit("getNotification", {
+                message: `${data.displayName} commented on your status`
+            });
+        }
+    })
 
+
+    socket.on("offline", async (data) => {
+        await socketService.deleteSocket(data.accountId)
     });
 });
-io.listen(5000);
 
+const PORT_SOCKET = 5000
+io.listen(PORT_SOCKET);
 
 const PORT = 3001
 app.listen(PORT, () => {

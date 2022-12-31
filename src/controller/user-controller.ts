@@ -104,6 +104,15 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
+    deleteNotification = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.deleteNotification(req.params);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
 }
 
 export default new UserController()

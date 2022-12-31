@@ -118,23 +118,13 @@ export class UserService {
     createNotification = async (data): Promise<ResponseBody> => {
         data.notificationId = this.random.randomNumber()
         data.time = this.random.getTime()
-        data.content = `${data.displayName} like status`
-        data.type = "like"
+        if (data.type === "liked") {
+            data.content = `${data.displayName} ${data.type} your status`
+        }
+        if (data.type === "commented") {
+            data.content = `${data.displayName} ${data.type} on your status`
+        }
         const message = await this.notificationRepo.create(data)
-        // const notification = await this.notificationRepo.selectByAccount(data.accountSent, data.contentId, data.type)
-        // console.log(notification[0].type)
-        // if (notification[0].type === 'like') {
-        //     return {
-        //         code: 200,
-        //         message: "success"
-        //     }
-        // } else {
-        //     const message = await this.notificationRepo.create(data)
-        //     return {
-        //         code: 200,
-        //         message: message
-        //     }
-        // }
         return {
             code: 200,
             message: message
@@ -142,11 +132,18 @@ export class UserService {
     }
 
     showNotification = async (): Promise<ResponseBody> => {
-        let listNotification = await this.notificationRepo.findAll()
+        const listNotification = await this.notificationRepo.findAll()
         return {
             code: 200,
             message: "success",
             data: listNotification
+        }
+    }
+    deleteNotification = async (data: any): Promise<ResponseBody> => {
+        const message = await this.notificationRepo.delete(data)
+        return {
+            code: 200,
+            message: message
         }
     }
 }

@@ -25,15 +25,6 @@ export class LoginController {
             res.status(500).json(err.message)
         }
     }
-
-    logout = async (req: Request, res: Response): Promise<void> => {
-        try {
-            let respBody = await this.loginService.logout(req.body)
-            res.status(respBody.code).json(respBody)
-        } catch (err) {
-            res.status(500).json(err.message)
-        }
-    }
 }
 
 export default new LoginController()

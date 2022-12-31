@@ -7,12 +7,10 @@ import {SocketRepo} from "../repo/socketRepo";
 
 export class LoginService {
     private accountRepo: AccountRepo
-    private socketRepo: SocketRepo
     private random: Random
 
     constructor() {
         this.accountRepo = new AccountRepo()
-        this.socketRepo = new SocketRepo()
         this.random = new Random()
     }
 
@@ -30,7 +28,7 @@ export class LoginService {
         } else {
             data.password = await bcrypt.hash(data.password, 10)
             data.accountId = this.random.randomNumber()
-            data.img = '../../public/storage/images.jpg'
+            data.img = 'https://firebasestorage.googleapis.com/v0/b/image-c737d.appspot.com/o/images%2Fimages.jpg0c8e102d-88a1-4a36-8715-08c4cd6a4966?alt=media&token=7b526c61-f551-470a-9752-77397b608496'
             data.birthday = this.random.getTime()
             const account = await this.accountRepo.create(data)
             return {
@@ -51,8 +49,6 @@ export class LoginService {
         } else {
             let comparePassword = await bcrypt.compare(account.password, findAccount[0].password)
             if (comparePassword) {
-                await this.accountRepo.update(findAccount[0].username, true)
-                // await this.createSocket(findAccount[0].accountId,)
                 let payload = {
                     accountId: findAccount[0].accountId
                 }
@@ -66,7 +62,8 @@ export class LoginService {
                         token: token,
                         accountId: findAccount[0].accountId,
                         displayName: findAccount[0].displayName,
-                        username: findAccount[0].username
+                        username: findAccount[0].username,
+                        imgAvt: findAccount[0].img
                     }
                 }
             } else {
@@ -78,34 +75,4 @@ export class LoginService {
         }
     }
 
-    logout = async (data: AccountRequest): Promise<ResponseBody> => {
-        let findAccount = await this.accountRepo.findByUsername(data.username)
-        await this.accountRepo.update(findAccount[0].username, false)
-        await this.deleteSocket(findAccount[0].accountRepo)
-        return {
-            code: 200,
-            message: "Logout success"
-        }
-    }
-
-    createSocket = async (accountId, socketId) => {
-        let data = {
-            id: this.random.randomNumber(),
-            accountId: +accountId,
-            socketId: socketId
-        }
-        // console.log(data)
-        await this.socketRepo.create(data)
-    }
-
-    findSocket = async (accountId)=>{
-        return await this.socketRepo.findSocketId(accountId)
-    }
-
-    deleteSocket = async (accountId) => {
-        await this.socketRepo.delete(accountId)
-    }
-    updateSocket = async (accountId, socketId)=>{
-        await this.socketRepo.updateSocketId(accountId, socketId)
-    }
 }

@@ -17,6 +17,7 @@ routerUser.delete('/posts/:postId', userController.deletePost);
 
 routerUser.post('/notification', userController.createNotification);
 routerUser.get('/notification', userController.showNotification);
+routerUser.delete('/notification/:accountSent/:contentId/:type', userController.deleteNotification);
 
 
 

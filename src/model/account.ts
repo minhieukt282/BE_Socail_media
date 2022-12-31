@@ -8,7 +8,7 @@ export class Account {
     public username: string
     @Column({type: 'text'})
     public password: string
-    @Column({type: "varchar", default: 'username'})
+    @Column({type: "varchar", default: 'New Username'})
     public displayName: string
     @Column({type: "text"})
     public img: string

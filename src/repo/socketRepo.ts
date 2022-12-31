@@ -19,7 +19,10 @@ export class SocketRepo {
     }
 
     delete = async (accountId: number): Promise<string> => {
-        await this.socketRepo.delete({where: {accountId: accountId}})
+        const query = `DELETE
+                       FROM socket
+                       WHERE accountId = ${accountId}`
+        await this.socketRepo.query(query)
         return "Delete done"
     }
     updateSocketId = async (accountId, socketId) => {

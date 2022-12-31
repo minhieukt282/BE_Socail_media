@@ -10,13 +10,13 @@ export class NotificationRepo {
         })
     }
 
-    create = async (data): Promise<string> => {
+    create = async (data: any): Promise<string> => {
         await this.notificationRepo.save(data)
         return "Create done"
     }
 
     findAll = async (): Promise<Notification> => {
-        return await this.notificationRepo.find({order:{time: "DESC"}})
+        return await this.notificationRepo.find({order: {time: "DESC"}})
     }
 
     selectByAccount = async (accountSent, contentId, type): Promise<Notification> => {
@@ -33,9 +33,13 @@ export class NotificationRepo {
         // })
     }
 
-    update = async (notificationId: number, data): Promise<string> => {
-        await this.notificationRepo.update({notificationId: notificationId}, data)
-        return "Update done"
+    delete = async (data: any): Promise<string> => {
+        const query = `DELETE
+                       FROM notification
+                       WHERE accountSent = ${data.accountSent} && notification.contentId = ${data.contentId}
+                           && type = '${data.type}'`
+        await this.notificationRepo.query(query)
+        return "Delete done"
     }
 
 }
