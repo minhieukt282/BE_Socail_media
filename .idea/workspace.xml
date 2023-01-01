@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9481f351-4592-412f-ba57-a6091ea9f6b9" name="Changes" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/model/notification.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_12_2022_23_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27_12_2022_23_03__Changes_.xml" afterDir="false" />
 =======
+=======
+>>>>>>> origin/hanhim
       <change afterPath="$PROJECT_DIR$/src/repo/postRepo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9546541e-4190-404e-a1b4-f1b3d4c335b1.xml" afterDir="false" />
@@ -86,6 +89,23 @@
 =======
       <change beforePath="$PROJECT_DIR$/src/controller/user-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/user-controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repo/accountRepo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repo/accountRepo.ts" afterDir="false" />
+<<<<<<< HEAD
+=======
+=======
+      <change afterPath="$PROJECT_DIR$/src/repo/relationshipRepo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/user-controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controller/user-controller.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controller/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controller/user-controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controller/user-controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/router/router-user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/router/router-user.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/router/router-user.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/service/user-service.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/service/user-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/service/user-service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/service/user-service.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/user-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/user-controller.ts" afterDir="false" />
+>>>>>>> origin/minhieukt
+>>>>>>> origin/hanhim
       <change beforePath="$PROJECT_DIR$/src/router/router-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/router-user.ts" afterDir="false" />
 >>>>>>> origin/hanhim
       <change beforePath="$PROJECT_DIR$/src/service/user-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/user-service.ts" afterDir="false" />

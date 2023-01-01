@@ -177,4 +177,12 @@ export class UserService {
             message: message
         }
     }
+    // showAccount = async (): Promise<ResponseBody> => {
+    //     let accounts = await this.postRepo.findAllAccount()
+    //     return {
+    //         code: 200,
+    //         message: "Success",
+    //         data: accounts
+    //     }
+    // }
 }

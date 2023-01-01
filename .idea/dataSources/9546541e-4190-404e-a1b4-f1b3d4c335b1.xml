@@ -1320,17 +1320,29 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
+<<<<<<< HEAD
     <column id="361" parent="317" name="accountReq">
+=======
+    <column id="349" parent="322" name="accountReq">
+>>>>>>> origin/hanhim
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
+<<<<<<< HEAD
     <column id="362" parent="317" name="accountRes">
+=======
+    <column id="350" parent="322" name="accountRes">
+>>>>>>> origin/hanhim
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
+<<<<<<< HEAD
     <column id="363" parent="317" name="isAccept">
+=======
+    <column id="351" parent="322" name="isAccept">
+>>>>>>> origin/hanhim
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>

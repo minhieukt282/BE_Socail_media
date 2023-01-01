@@ -139,6 +139,16 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+    // showAccount = async (req: Request, res: Response): Promise<string | any> => {
+    //     try{
+    //         let respBody = await this.userService.showAccount();
+    //         return res.status(respBody.code).json(respBody);
+    //     }catch (e){
+    //         res.status(500).json({
+    //             message: e.message
+    //         })
+    //     }
+    // }
 }
 
 export default new UserController()
