@@ -5,9 +5,9 @@ export class Relationship {
     @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly relationshipId: number
     @Column({type: 'bigint'})
-    public accountIdOne: number
+    public accountReq: number
     @Column({type: 'bigint'})
-    public accountIdTwo: number
+    public accountRes: number
     @Column({type: "boolean", default: false})
-    public status : boolean
+    public isAccept : boolean
 }

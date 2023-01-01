@@ -9,3 +9,9 @@ routerUser.get('/posts', userController.showPost);
 routerUser.patch('/posts/:postId', userController.updatePost);
 routerUser.delete('/posts/:postId', userController.deletePost);
 
+
+routerUser.get('/:accountId/friends/', userController.showFriends)
+routerUser.post('/friends', userController.makeFriend)
+routerUser.get('/friends/:accountRes', userController.waitingFriends)
+routerUser.patch('/friends/:relationshipId', userController.acceptFriend)
+routerUser.delete('/friends/:relationshipId', userController.declineFriend)

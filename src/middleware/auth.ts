@@ -1,8 +1,6 @@
 import jwt from "jsonwebtoken";
 
 export let SECRET = '19!12'
-let USER = 'user'
-let ADMIN = 'admin'
 export const auth = (req, res, next) => {
     let authorization = req.headers.authorization
     if (authorization) {

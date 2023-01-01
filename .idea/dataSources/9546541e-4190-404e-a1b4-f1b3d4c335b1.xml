@@ -1247,17 +1247,17 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="349" parent="322" name="accountIdOne">
+    <column id="349" parent="322" name="accountReq">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="350" parent="322" name="accountIdTwo">
+    <column id="350" parent="322" name="accountRes">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="351" parent="322" name="status">
+    <column id="351" parent="322" name="isAccept">
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>

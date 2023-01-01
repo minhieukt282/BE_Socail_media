@@ -7,16 +7,27 @@ export class PostRepo {
     constructor() {
         AppDataSource.initialize().then(connection => {
             this.postRepo = connection.getRepository(Post)
+        }).catch(e => {
+            console.log('err')
         })
     }
 
-    create = async (newPost: PostsRequest): Promise<string> => {
-        await this.postRepo.save(newPost)
-        return "Create done"
+    async create(newPost: PostsRequest): Promise<string> {
+        return await this.postRepo.save(newPost)
     }
 
-    find = async (): Promise<PostRepo> => {
-        return await this.postRepo.find()
+    async findAll() {
+        let query = `select p.img        as imgPost,
+                            a.img        as imgAvt,
+                            p.timeUpdate as timePost,
+                            p.content    as contentPost,
+                            a.username   as nameAccount,
+                            p.status as statusPost,
+                            a.status as statusAccount
+                     from post as p
+                              join account a on p.accountId = a.accountId
+                     order by p.timeUpdate desc`
+        return await this.postRepo.query(query)
     }
 
     update = async (postId: number, data: PostsRequest): Promise<string> => {
@@ -28,4 +39,5 @@ export class PostRepo {
         await this.postRepo.delete(postId)
         return "Delete done"
     }
+
 }
