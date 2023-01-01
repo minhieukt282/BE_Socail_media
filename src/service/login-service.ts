@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 import {SECRET} from "../middleware/auth";
 import {Random} from "./random";
-import {SocketRepo} from "../repo/socketRepo";
 
 export class LoginService {
     private accountRepo: AccountRepo
@@ -74,5 +73,4 @@ export class LoginService {
             }
         }
     }
-
 }

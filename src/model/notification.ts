@@ -11,13 +11,11 @@ export class Notification {
     @Column({type: 'bigint'})
     public accountReceiver: number
     @Column({type: 'bigint'})
-    public contentId: number
+    public postId: number
     @Column({type: 'text'})
     public content: string
     @Column({type: "date"})
     public time: Date
     @Column({type: "varchar"})
     public type: string
-    @Column({type: "boolean", default: false})
-    public status: boolean
 }

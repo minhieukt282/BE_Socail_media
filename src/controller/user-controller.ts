@@ -57,7 +57,7 @@ export class UserController {
 
     createPost = async (req: Request, res: Response): Promise<void> => {
         try {
-            let respBody = await this.userService.create(req.body)
+            let respBody = await this.userService.createPost(req.body)
             res.status(respBody.code).json(respBody)
         } catch (err) {
             res.status(500).json(err.message)
@@ -108,6 +108,32 @@ export class UserController {
     deleteNotification = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.deleteNotification(req.params);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    createLike = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.createLike(req.body);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    showLike = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.showLike();
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    deleteLike = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.deleteLike(req.params);
             res.status(respBody.code).json(respBody)
         } catch (err) {
             res.status(500).json(err.message)

@@ -12,7 +12,7 @@ export class PostRepo {
 
     create = async (newPost: PostsRequest): Promise<string> => {
         await this.postRepo.save(newPost)
-        return "Create done"
+        return "create done"
     }
 
     findAll = async (): Promise<PostRepo> => {
@@ -22,19 +22,22 @@ export class PostRepo {
                             p.content    as contentPost,
                             a.username,
                             p.postId,
-                            a.accountId
+                            a.accountId,
+                            p.status,
+                            a.displayName
                      from post as p
-                              join account a on p.accountId = a.accountId`
+                              join account a on p.accountId = a.accountId
+                     order by timePost desc `
         return await this.postRepo.query(query)
     }
 
     update = async (postId: number, data: PostsRequest): Promise<string> => {
         await this.postRepo.update({postId: postId}, data)
-        return "Update done"
+        return "update done"
     }
 
     delete = async (postId: number): Promise<string> => {
         await this.postRepo.delete(postId)
-        return "Delete done"
+        return "delete done"
     }
 }

@@ -28,21 +28,21 @@ export class RelationshipRepo {
         }
     }
 
-    create = async (data: any): Promise<number> => {
+    create = async (data: FriendsRequest): Promise<number> => {
         let result = await this.relationshipRepo.save(data)
         return result.relationshipId
     }
 
-    update = async (relationshipId: number, data: any): Promise<string> => {
+    update = async (relationshipId: number, data: boolean): Promise<string> => {
         const relationshipUpdate = await this.relationshipRepo.find({where: {relationshipId: relationshipId}})
         relationshipUpdate[0].isAccept = data
         await this.relationshipRepo.save(relationshipUpdate)
-        return "Update done"
+        return "update done"
     }
 
     del = async (relationshipId: number): Promise<string> => {
         await this.relationshipRepo.delete(relationshipId)
-        return "Delete done"
+        return "delete done"
     }
 
 }

@@ -12,7 +12,7 @@ export class SocketRepo {
 
     create = async (newData): Promise<string> => {
         await this.socketRepo.save(newData)
-        return "Create done"
+        return "create done"
     }
     findSocketId = async (accountId) => {
         return await this.socketRepo.findOneBy({accountId: accountId + ""})
@@ -23,7 +23,7 @@ export class SocketRepo {
                        FROM socket
                        WHERE accountId = ${accountId}`
         await this.socketRepo.query(query)
-        return "Delete done"
+        return "delete done"
     }
     updateSocketId = async (accountId, socketId) => {
         let query = `UPDATE socket

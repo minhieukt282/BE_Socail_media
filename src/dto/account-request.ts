@@ -1,7 +1,9 @@
 interface AccountRequest {
-    username: string;
+    accountId?: number;
+    username?: string;
     password?: string;
-    accountId: number;
-    img: string | null;
-    birthday: Date | null | string;
+    displayName?: string;
+    img?: string | null;
+    birthday?: Date | null | string;
+    location?: string;
 }

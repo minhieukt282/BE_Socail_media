@@ -54,10 +54,21 @@ io.on("connection", (socket) => {
         }
     })
 
+    socket.on('acceptFriend', async (data) => {
+        const socketId = await socketService.findSocket(+data.accountReceiver)
+        if(socketId != null){
+            io.to(`${socketId.socketId}`).emit("getNotification", {
+                message: `${data.displayName} has accepted your friend request`
+            });
+        }
+    })
 
     socket.on("offline", async (data) => {
         await socketService.deleteSocket(data.accountId)
     });
+    socket.on("disconnect", ()=>{
+
+    })
 });
 
 const PORT_SOCKET = 5000
