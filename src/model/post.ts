@@ -9,9 +9,9 @@ export class Post {
     @Column({type: 'text'})
     public img: string
     @Column({type: "text"})
-    public content : string
-    @Column({type: "date"})
-    public timeUpdate : Date
+    public content: string
+    @Column({type: 'timestamp', default: () => "CURRENT_TIMESTAMP"})
+    public timeUpdate: string
     @Column({type: "varchar", default: "public"})
-    public status : string
+    public status: string
 }

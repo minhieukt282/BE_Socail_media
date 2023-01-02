@@ -17,7 +17,7 @@ routerUser.delete('/posts/:postId', userController.deletePost);
 
 routerUser.post('/notification', userController.createNotification);
 routerUser.get('/notification', userController.showNotification);
-routerUser.delete('/notification/:accountSent/:contentId/:type', userController.deleteNotification);
+routerUser.delete('/notification/:accountSent/:postId/:type', userController.deleteNotification);
 
 routerUser.post('/likes', userController.createLike)
 routerUser.get('/likes', userController.showLike)

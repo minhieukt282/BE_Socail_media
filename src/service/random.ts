@@ -6,6 +6,6 @@ export class Random {
     }
 
     getTime = (): string => {
-        return `${this.today.getFullYear()}/${this.today.getMonth() + 1}/${this.today.getDate()}`
+        return `${this.today.getFullYear()}-${this.today.getMonth() + 1}-${this.today.getDate()} ${this.today.getHours()}:${this.today.getMinutes()}:${this.today.getSeconds()}`
     }
 }

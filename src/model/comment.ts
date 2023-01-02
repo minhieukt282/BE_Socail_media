@@ -10,6 +10,6 @@ export class Comment {
     public accountId: number
     @Column({type: "text"})
     public content: string
-    @Column({type: "date"})
-    public timeUpdate: Date
+    @Column({type: 'timestamp', default: () => "CURRENT_TIMESTAMP"})
+    public timeUpdate: string
 }

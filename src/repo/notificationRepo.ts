@@ -22,7 +22,7 @@ export class NotificationRepo {
     delete = async (data: any): Promise<string> => {
         const query = `DELETE
                        FROM notification
-                       WHERE accountSent = ${data.accountSent} && notification.contentId = ${data.postId}
+                       WHERE accountSent = ${data.accountSent} && postId = ${data.postId}
                            && type = '${data.type}'`
         await this.notificationRepo.query(query)
         return "delete done"

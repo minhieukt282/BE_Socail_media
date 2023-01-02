@@ -85,11 +85,11 @@ export class UserService {
 
     createPost = async (data: PostsRequest): Promise<ResponseBody> => {
         data.postId = this.random.randomNumber();
-        data.timeUpdate = this.random.getTime()
-        const message = await this.postRepo.create(data)
+        const post = await this.postRepo.create(data)
         return {
             code: 201,
-            message: message
+            message: "success",
+            data: post[0]
         }
     }
 
@@ -120,7 +120,6 @@ export class UserService {
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
         dataNotice.notificationId = this.random.randomNumber()
-        dataNotice.time = this.random.getTime()
         if (dataNotice.type === "liked") {
             dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} your status`
         }
