@@ -1,10 +1,11 @@
 export class Random {
+    today = new Date()
+
     randomNumber = (): number => {
-        let today = new Date()
-        return today.getTime() * Math.floor(Math.random() * 1000)
+        return this.today.getTime() * (Math.floor(Math.random() * 10000) + 1)
     }
-    randomTime = (): string => {
-        let today = new Date()
-        return `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}+`
+
+    getTime = (): string => {
+        return `${this.today.getFullYear()}-${this.today.getMonth() + 1}-${this.today.getDate()} ${this.today.getHours()}:${this.today.getMinutes()}:${this.today.getSeconds()}`
     }
 }

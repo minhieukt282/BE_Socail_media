@@ -1,21 +1,25 @@
-
+import {PostRepo} from "../repo/postRepo";
+import {Random} from "./random";
 import {RelationshipRepo} from "../repo/relationshipRepo";
 import {AccountRepo} from "../repo/accountRepo";
-import {Random} from "./random";
-import {PostRepo} from "../repo/postRepo";
-import bcrypt from "bcrypt";
+import {NotificationRepo} from "../repo/notificationRepo";
+import {LikeRepo} from "../repo/likeRepo";
 
 export class UserService {
-    private random: Random;
-    private relationshipRepo: RelationshipRepo;
-    private accountRepo: AccountRepo;
-    private postRepo: PostRepo;
+    private random: Random
+    private relationshipRepo: RelationshipRepo
+    private accountRepo: AccountRepo
+    private postRepo: PostRepo
+    private notificationRepo: NotificationRepo
+    private likeRepo: LikeRepo
 
     constructor() {
-        this.random = new Random();
-        this.relationshipRepo = new RelationshipRepo();
-        this.accountRepo = new AccountRepo();
-        this.postRepo = new PostRepo();
+        this.random = new Random()
+        this.relationshipRepo = new RelationshipRepo()
+        this.accountRepo = new AccountRepo()
+        this.postRepo = new PostRepo()
+        this.notificationRepo = new NotificationRepo()
+        this.likeRepo = new LikeRepo()
     }
 
     getFriends = async (accountId: number, status: boolean): Promise<any> => {
@@ -29,76 +33,76 @@ export class UserService {
             }
             friendsData.push(friends)
         }
-        return friendsData;
+        return friendsData
     }
 
     showFriends = async (accountId: number): Promise<ResponseBody> => {
-        let friendsData = await this.getFriends(accountId, true)
+        const friendsData = await this.getFriends(accountId, true)
         return {
             code: 200,
-            message: "Success",
+            message: "success",
             data: friendsData
         }
     }
 
-    makeFriend = async (data: FriendsRequest): Promise<ResponseBody> => {
-        data.accountReq = +data.accountReq
+    makeFriend = async (accountId: number, data: FriendsRequest): Promise<ResponseBody> => {
+        data.accountReq = accountId
         data.accountRes = +data.accountRes
         data.relationshipId = this.random.randomNumber()
         data.isAccept = false
-        let relationshipId = await this.relationshipRepo.create(data)
+        const relationshipId = await this.relationshipRepo.create(data)
         return {
             code: 201,
-            message: "Success",
+            message: "success",
             data: relationshipId
         }
     }
 
     waitingFriends = async (accountId: number): Promise<ResponseBody> => {
-        let friendsData = await this.getFriends(accountId, false)
+        const friendsData = await this.getFriends(accountId, false)
         return {
             code: 200,
-            message: "Success",
+            message: "success",
             data: friendsData
         }
     }
 
     acceptFriend = async (relationshipId: number): Promise<ResponseBody> => {
-        await this.relationshipRepo.update(relationshipId, true)
+        const message = await this.relationshipRepo.update(relationshipId, true)
         return {
             code: 201,
-            message: "Accept done"
+            message: message
         }
     }
 
     declineFriend = async (relationshipId: number): Promise<ResponseBody> => {
-        await this.relationshipRepo.del(relationshipId)
+        const message = await this.relationshipRepo.del(relationshipId)
         return {
             code: 201,
-            message: "Decline done"
+            message: message
         }
     }
 
-    async create(data: PostsRequest): Promise<ResponseBody> {
-            data.postId = this.random.randomNumber();
-            data.timeUpdate = this.random.randomTime();
-            let message = await this.postRepo.create(data)
-            return {
-                code: 201,
-                message: message
-            }
-
+    createPost = async (data: PostsRequest): Promise<ResponseBody> => {
+        data.postId = this.random.randomNumber();
+        const post = await this.postRepo.create(data)
+        return {
+            code: 201,
+            message: "success",
+            data: post[0]
+        }
     }
-    async  showPost(): Promise<ResponseBody> {
-        let posts = await this.postRepo.findAll()
+
+    showPost = async (): Promise<ResponseBody> => {
+        const posts = await this.postRepo.findAll()
         return {
             code: 200,
-            message: "Success",
+            message: "success",
             data: posts
         }
     }
 
-    async updatePost (postId: number, data: PostsRequest): Promise<ResponseBody>{
+    updatePost = async (postId: number, data: PostsRequest): Promise<ResponseBody> => {
         let message = await this.postRepo.update(postId, data)
         return {
             code: 200,
@@ -106,7 +110,7 @@ export class UserService {
         }
     }
 
-    async deletePost  (postId): Promise<ResponseBody> {
+    deletePost = async (postId): Promise<ResponseBody> => {
         let message = await this.postRepo.delete(postId);
         return {
             code: 200,
@@ -114,22 +118,70 @@ export class UserService {
         }
     }
 
-    async showAccount  (): Promise<ResponseBody> {
-        let accounts = await this.accountRepo.findAllAccount()
+    createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
+        dataNotice.notificationId = this.random.randomNumber()
+        if (dataNotice.type === "liked") {
+            dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} your status`
+        }
+        if (dataNotice.type === "commented") {
+            dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} on your status`
+        }
+        if (dataNotice.type === "friends") {
+            dataNotice.content = `${dataNotice.displayName} has accepted your friend request`
+        }
+        const message = await this.notificationRepo.create(dataNotice)
         return {
-            code: 200,
-            message: "Success",
-            data: accounts
+            code: 201,
+            message: message
         }
     }
 
-    async updateAccount (accountId: number, data: AccountRequest): Promise<ResponseBody>{
-        console.log(accountId)
-        data.password = await bcrypt.hash(data.password, 10)
-        let message = await this.accountRepo.updateAccount(accountId, data)
+    showNotification = async (): Promise<ResponseBody> => {
+        const listNotification = await this.notificationRepo.findAll()
+        return {
+            code: 200,
+            message: "success",
+            data: listNotification
+        }
+    }
+    deleteNotification = async (data: any): Promise<ResponseBody> => {
+        const message = await this.notificationRepo.delete(data)
         return {
             code: 200,
             message: message
         }
     }
+
+    createLike = async (dataLike: LikeRequest): Promise<ResponseBody> => {
+        dataLike.likeId = this.random.randomNumber()
+        const message = await this.likeRepo.create(dataLike)
+        return {
+            code: 201,
+            message: message
+        }
+    }
+    showLike = async (): Promise<ResponseBody> => {
+        const data = await this.likeRepo.findAll()
+        return {
+            code: 201,
+            message: "success",
+            data: data
+        }
+    }
+
+    deleteLike = async (dataLike: any): Promise<ResponseBody> => {
+        const message = await this.likeRepo.delete(dataLike)
+        return {
+            code: 200,
+            message: message
+        }
+    }
+    // showAccount = async (): Promise<ResponseBody> => {
+    //     let accounts = await this.postRepo.findAllAccount()
+    //     return {
+    //         code: 200,
+    //         message: "Success",
+    //         data: accounts
+    //     }
+    // }
 }

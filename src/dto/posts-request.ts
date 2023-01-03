@@ -1,8 +1,8 @@
 interface PostsRequest {
-    postId;
-    accountId: number;
+    postId?;
+    accountId?: number;
     img?: string | null;
-    content: string;
+    content?: string;
     timeUpdate?: Date | null | string;
-    status: string;
+    status?: string;
 }
