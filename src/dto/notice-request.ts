@@ -5,6 +5,6 @@ interface NoticeRequest{
     accountReceiver: number,
     postId: number,
     content: string
-    time: Date | string,
+    time?: Date | string | null,
     type: string
 }

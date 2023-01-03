@@ -14,8 +14,8 @@ export class Notification {
     public postId: number
     @Column({type: 'text'})
     public content: string
-    @Column({type: "date"})
-    public time: Date
+    @Column({type: 'timestamp', default: () => "CURRENT_TIMESTAMP"})
+    public time: string
     @Column({type: "varchar"})
     public type: string
 }

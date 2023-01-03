@@ -1176,7 +1176,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>4</Position>
     </column>
     <column id="333" parent="313" name="timeUpdate">
-      <DataType>date|0s</DataType>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
@@ -1191,7 +1192,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="336" parent="314" name="likeId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>16657371925424609</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1222,7 +1223,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="342" parent="315" name="notificationId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>16260922602490057</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1252,13 +1253,14 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="348" parent="315" name="time">
-      <DataType>date|0s</DataType>
+    <column id="348" parent="315" name="type">
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="349" parent="315" name="type">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="349" parent="315" name="time">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
@@ -1273,7 +1275,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="352" parent="316" name="postId">
-      <AutoIncrement>1668986033748723</AutoIncrement>
+      <AutoIncrement>16690778301815293</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1293,14 +1295,15 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="356" parent="316" name="timeUpdate">
-      <DataType>date|0s</DataType>
+    <column id="356" parent="316" name="status">
+      <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;public&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="357" parent="316" name="status">
-      <DataType>varchar(255)|0s</DataType>
-      <DefaultExpression>&apos;public&apos;</DefaultExpression>
+    <column id="357" parent="316" name="timeUpdate">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
@@ -1320,29 +1323,17 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-<<<<<<< HEAD
     <column id="361" parent="317" name="accountReq">
-=======
-    <column id="349" parent="322" name="accountReq">
->>>>>>> origin/hanhim
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-<<<<<<< HEAD
     <column id="362" parent="317" name="accountRes">
-=======
-    <column id="350" parent="322" name="accountRes">
->>>>>>> origin/hanhim
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-<<<<<<< HEAD
     <column id="363" parent="317" name="isAccept">
-=======
-    <column id="351" parent="322" name="isAccept">
->>>>>>> origin/hanhim
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
