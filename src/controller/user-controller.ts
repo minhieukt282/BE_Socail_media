@@ -73,16 +73,28 @@ export class UserController {
             })
         }
     }
-    // showAccount = async (req: Request, res: Response): Promise<string | any> => {
-    //     try{
-    //         let respBody = await this.userService.showAccount();
-    //         return res.status(respBody.code).json(respBody);
-    //     }catch (e){
-    //         res.status(500).json({
-    //             message: e.message
-    //         })
-    //     }
-    // }
+    showAccount = async (req: Request, res: Response): Promise<string | any> => {
+        try{
+            let respBody = await this.userService.showAccount();
+            return res.status(respBody.code).json(respBody);
+        }catch (e){
+            console.log(e)
+            res.status(500).json({
+                message: e.message
+            })
+        }
+    }
+
+    async updateAccount(req: Request, res: Response):Promise<string | any>{
+        try {
+            let respBody = await this.userService.updateAccount(+req.params.accountId, req.body)
+            return res.status(respBody.code).json(respBody)
+        }catch (e){
+            res.status(500).json({
+                message: e.message
+            })
+        }
+    }
 }
 
 export default new UserController()

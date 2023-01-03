@@ -1110,7 +1110,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="323" parent="319" name="accountId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1635857518893643</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1200,7 +1200,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="340" parent="321" name="postId">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>1647565242955151</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1220,55 +1220,50 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="344" parent="321" name="timeUpdate">
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-    </column>
-    <column id="345" parent="321" name="status">
+    <column id="344" parent="321" name="status">
       <DataType>varchar(255)|0s</DataType>
       <DefaultExpression>&apos;public&apos;</DefaultExpression>
       <NotNull>1</NotNull>
-      <Position>6</Position>
+      <Position>5</Position>
     </column>
-    <index id="346" parent="321" name="PRIMARY">
+    <index id="345" parent="321" name="PRIMARY">
       <ColNames>postId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="347" parent="321" name="PRIMARY">
+    <key id="346" parent="321" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="348" parent="322" name="relationshipId">
+    <column id="347" parent="322" name="relationshipId">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="349" parent="322" name="accountReq">
+    <column id="348" parent="322" name="accountReq">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="350" parent="322" name="accountRes">
+    <column id="349" parent="322" name="accountRes">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="351" parent="322" name="isAccept">
+    <column id="350" parent="322" name="isAccept">
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <index id="352" parent="322" name="PRIMARY">
+    <index id="351" parent="322" name="PRIMARY">
       <ColNames>relationshipId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="353" parent="322" name="PRIMARY">
+    <key id="352" parent="322" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

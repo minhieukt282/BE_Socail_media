@@ -15,3 +15,6 @@ routerUser.post('/friends', userController.makeFriend)
 routerUser.get('/friends/:accountRes', userController.waitingFriends)
 routerUser.patch('/friends/:relationshipId', userController.acceptFriend)
 routerUser.delete('/friends/:relationshipId', userController.declineFriend)
+
+routerUser.get('/accounts', userController.showAccount)
+routerUser.patch('/accounts/:accountId',userController.updateAccount)

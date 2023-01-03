@@ -10,8 +10,8 @@ export class Post {
     public img: string
     @Column({type: "text"})
     public content : string
-    @Column({type: "date"})
-    public timeUpdate : Date
+    @Column({type: 'timestamp', default: () => "CURRENT_TIMESTAMP"})
+    public timeUpdate: string
     @Column({type: "varchar", default: "public"})
     public status : string
 }

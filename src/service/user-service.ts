@@ -3,6 +3,7 @@ import {RelationshipRepo} from "../repo/relationshipRepo";
 import {AccountRepo} from "../repo/accountRepo";
 import {Random} from "./random";
 import {PostRepo} from "../repo/postRepo";
+import bcrypt from "bcrypt";
 
 export class UserService {
     private random: Random;
@@ -88,7 +89,7 @@ export class UserService {
             }
 
     }
-    showPost = async (): Promise<ResponseBody> => {
+    async  showPost(): Promise<ResponseBody> {
         let posts = await this.postRepo.findAll()
         return {
             code: 200,
@@ -97,7 +98,7 @@ export class UserService {
         }
     }
 
-    updatePost = async (postId: number, data: PostsRequest): Promise<ResponseBody> => {
+    async updatePost (postId: number, data: PostsRequest): Promise<ResponseBody>{
         let message = await this.postRepo.update(postId, data)
         return {
             code: 200,
@@ -105,19 +106,30 @@ export class UserService {
         }
     }
 
-    deletePost = async (postId): Promise<ResponseBody> => {
+    async deletePost  (postId): Promise<ResponseBody> {
         let message = await this.postRepo.delete(postId);
         return {
             code: 200,
             message: message
         }
     }
-    // showAccount = async (): Promise<ResponseBody> => {
-    //     let accounts = await this.postRepo.findAllAccount()
-    //     return {
-    //         code: 200,
-    //         message: "Success",
-    //         data: accounts
-    //     }
-    // }
+
+    async showAccount  (): Promise<ResponseBody> {
+        let accounts = await this.accountRepo.findAllAccount()
+        return {
+            code: 200,
+            message: "Success",
+            data: accounts
+        }
+    }
+
+    async updateAccount (accountId: number, data: AccountRequest): Promise<ResponseBody>{
+        console.log(accountId)
+        data.password = await bcrypt.hash(data.password, 10)
+        let message = await this.accountRepo.updateAccount(accountId, data)
+        return {
+            code: 200,
+            message: message
+        }
+    }
 }

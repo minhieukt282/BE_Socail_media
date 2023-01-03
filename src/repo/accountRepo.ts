@@ -10,30 +10,36 @@ export class AccountRepo {
         })
     }
 
-    create = async (newAccount: any): Promise<Account> => {
+    async create  (newAccount: any): Promise<Account>{
         return await this.accountRepo.save(newAccount)
     }
-
-    update = async (username: string, data: any): Promise<void> => {
+     async  update(username: string, data: any): Promise<void>{
         const userUpdate = await this.findByUsername(username)
         userUpdate[0].status = data
         await this.accountRepo.save(userUpdate)
     }
 
-    del = async (id: number): Promise<string> => {
+    async del (id: number): Promise<string>{
         await this.accountRepo.delete(id)
         return "delete done"
     }
 
-    findById = async (id: number): Promise<Account> => {
+    async findById (id: number): Promise<Account>{
         return await this.accountRepo.findOneById(id)
     }
 
-    findByUsername = async (username: string): Promise<Account> => {
+    async findByUsername  (username: string): Promise<Account> {
         return await this.accountRepo.find({
             where: {
                 username: username
             }
         })
+    }
+    async  findAllAccount (){
+        return await this.accountRepo.find()
+    }
+    async updateAccount  (accountId: number, data: AccountRequest): Promise<string>{
+        await this.accountRepo.update({accountId: accountId}, data)
+        return "Update account done"
     }
 }
