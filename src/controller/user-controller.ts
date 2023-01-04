@@ -131,6 +131,15 @@ export class UserController {
         }
     }
 
+    showCountLike = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.showCountLike();
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
     deleteLike = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.deleteLike(req.params);
@@ -140,25 +149,11 @@ export class UserController {
         }
     }
     showAccount = async (req: Request, res: Response): Promise<string | any> => {
-        try{
-            let respBody = await this.userService.showAccount();
-            return res.status(respBody.code).json(respBody);
-        }catch (e){
-            console.log(e)
-            res.status(500).json({
-                message: e.message
-            })
-        }
-    }
-
-    async updateAccount(req: Request, res: Response):Promise<string | any>{
         try {
-            let respBody = await this.userService.updateAccount(+req.params.accountId, req.body)
-            return res.status(respBody.code).json(respBody)
-        }catch (e){
-            res.status(500).json({
-                message: e.message
-            })
+            let respBody = await this.userService.showAccount(+req.params.accountId);
+            return res.status(respBody.code).json(respBody);
+        } catch (err) {
+            res.status(500).json(err.message)
         }
     }
 }

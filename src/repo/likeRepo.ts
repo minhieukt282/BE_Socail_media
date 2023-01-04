@@ -19,6 +19,13 @@ export class LikeRepo {
         return await this.likeRepo.find()
     }
 
+    findCountLike = async () => {
+        const query = `select postId, count(postId) as countLike
+                       from \`like\`
+                       group by postId`
+        return await this.likeRepo.query(query)
+    }
+
     delete = async (dataLike): Promise<string> => {
         const query = `DELETE
                        FROM \`like\` as l
