@@ -11,7 +11,7 @@ export class PostRepo {
     }
 
     create = async (newPost: PostsRequest): Promise<Post> => {
-        let result =   await this.postRepo.save(newPost)
+        let result = await this.postRepo.save(newPost)
         let query = `select p.img        as imgPost,
                             a.img        as imgAvt,
                             p.timeUpdate as timePost,
@@ -51,5 +51,12 @@ export class PostRepo {
     delete = async (postId: number): Promise<string> => {
         await this.postRepo.delete(postId)
         return "delete done"
+    }
+
+    searchPost = async (searchKey: string): Promise<string> => {
+        const query = `select *
+                       from post
+                       where content like '%${searchKey}%'`
+        return this.postRepo.query(query)
     }
 }

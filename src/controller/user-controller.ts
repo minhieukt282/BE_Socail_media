@@ -55,6 +55,24 @@ export class UserController {
         }
     }
 
+    unfriend = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.unfriend(+req.params.accountReq, +req.params.accountRes)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    showRelationship = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.showRelationship()
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
     createPost = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.createPost(req.body)
@@ -151,6 +169,15 @@ export class UserController {
     showAccount = async (req: Request, res: Response): Promise<string | any> => {
         try {
             let respBody = await this.userService.showAccount(+req.params.accountId);
+            return res.status(respBody.code).json(respBody);
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    search = async (req: Request, res: Response): Promise<string | any> => {
+        try {
+            let respBody = await this.userService.search(req.params.search);
             return res.status(respBody.code).json(respBody);
         } catch (err) {
             res.status(500).json(err.message)

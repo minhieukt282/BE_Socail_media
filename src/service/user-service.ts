@@ -70,16 +70,33 @@ export class UserService {
     acceptFriend = async (relationshipId: number): Promise<ResponseBody> => {
         const message = await this.relationshipRepo.update(relationshipId, true)
         return {
-            code: 201,
+            code: 200,
             message: message
         }
     }
 
     declineFriend = async (relationshipId: number): Promise<ResponseBody> => {
-        const message = await this.relationshipRepo.del(relationshipId)
+        const message = await this.relationshipRepo.deleteByRelationshipId(relationshipId)
         return {
-            code: 201,
+            code: 200,
             message: message
+        }
+    }
+
+    unfriend = async (accountReq: number, accountRes: number): Promise<ResponseBody> => {
+        const message = await this.relationshipRepo.deleteByAccountReq(accountReq, accountRes)
+        return {
+            code: 200,
+            message: message
+        }
+    }
+
+    showRelationship = async (): Promise<ResponseBody> => {
+        const relationships = await this.relationshipRepo.findAll()
+        return {
+            code: 200,
+            message: "success",
+            data: relationships
         }
     }
 
@@ -128,6 +145,9 @@ export class UserService {
         }
         if (dataNotice.type === "friends") {
             dataNotice.content = `${dataNotice.displayName} has accepted your friend request`
+        }
+        if (dataNotice.type === "addFriends") {
+            dataNotice.content = `${dataNotice.displayName} sent a friend request`
         }
         const message = await this.notificationRepo.create(dataNotice)
         return {
@@ -191,6 +211,19 @@ export class UserService {
             code: 200,
             message: "success",
             data: accountInfo
+        }
+    }
+
+    search = async (searchKey: string): Promise<ResponseBody> => {
+        const accounts = await this.accountRepo.searchAccount(searchKey)
+        const posts = await this.postRepo.searchPost(searchKey)
+        return {
+            code: 200,
+            message: "success",
+            data: {
+                listAccount: accounts,
+                listPost: posts
+            }
         }
     }
 }

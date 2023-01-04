@@ -10,6 +10,10 @@ export class RelationshipRepo {
         })
     }
 
+    findAll = async (): Promise<Relationship>=>{
+        return await this.relationshipRepo.find()
+    }
+
     findById = async (accountId: number, status: boolean) => {
         if (status) {
             return await this.relationshipRepo.find({
@@ -40,9 +44,16 @@ export class RelationshipRepo {
         return "update done"
     }
 
-    del = async (relationshipId: number): Promise<string> => {
+    deleteByRelationshipId = async (relationshipId: number): Promise<string> => {
         await this.relationshipRepo.delete(relationshipId)
         return "delete done"
     }
 
+    deleteByAccountReq = async (accountReq: number, accountRes: number): Promise<string> => {
+        const query = `delete
+                       from relationship
+                       where accountReq = ${accountReq} && accountRes = ${accountRes}`
+        await this.relationshipRepo.query(query)
+        return "delete done"
+    }
 }
