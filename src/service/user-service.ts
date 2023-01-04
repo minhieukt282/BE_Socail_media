@@ -163,9 +163,18 @@ export class UserService {
     showLike = async (): Promise<ResponseBody> => {
         const data = await this.likeRepo.findAll()
         return {
-            code: 201,
+            code: 200,
             message: "success",
             data: data
+        }
+    }
+
+    showCountLike = async (): Promise<ResponseBody> => {
+        const countLike = await this.likeRepo.findCountLike()
+        return {
+            code: 200,
+            message: "success",
+            data: countLike
         }
     }
 
@@ -176,12 +185,12 @@ export class UserService {
             message: message
         }
     }
-    // showAccount = async (): Promise<ResponseBody> => {
-    //     let accounts = await this.postRepo.findAllAccount()
-    //     return {
-    //         code: 200,
-    //         message: "Success",
-    //         data: accounts
-    //     }
-    // }
+    showAccount = async (accountId: number): Promise<ResponseBody> => {
+        const accountInfo = await this.accountRepo.findById(accountId)
+        return {
+            code: 200,
+            message: "success",
+            data: accountInfo
+        }
+    }
 }
