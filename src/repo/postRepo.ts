@@ -43,6 +43,22 @@ export class PostRepo {
         return await this.postRepo.query(query)
     }
 
+    findById = async (postId: number): Promise<PostRepo> => {
+        let query = `select p.img        as imgPost,
+                            a.img        as imgAvt,
+                            p.timeUpdate as timePost,
+                            p.content    as contentPost,
+                            a.username,
+                            p.postId,
+                            a.accountId,
+                            p.status,
+                            a.displayName
+                     from post as p
+                              join account a on p.accountId = a.accountId
+                     where p.postId = ${postId}`
+        return await this.postRepo.query(query)
+    }
+
     update = async (postId: number, data: PostsRequest): Promise<string> => {
         await this.postRepo.update({postId: postId}, data)
         return "update done"
