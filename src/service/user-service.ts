@@ -103,10 +103,12 @@ export class UserService {
     }
 
     updatePost = async (postId: number, data: PostsRequest): Promise<ResponseBody> => {
-        let message = await this.postRepo.update(postId, data)
+        const message = await this.postRepo.update(postId, data)
+        const dataUpdate = await this.postRepo.findById(postId)
         return {
             code: 200,
-            message: message
+            message: message,
+            data: dataUpdate
         }
     }
 
