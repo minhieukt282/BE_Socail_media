@@ -24,7 +24,9 @@ routerUser.get('/likes', userController.showLike)
 routerUser.get('/likes/numbers', userController.showCountLike)
 routerUser.delete('/likes/:accountId/:postId', userController.deleteLike)
 
-routerUser.get('/:accountId', userController.showAccount)
+routerUser.get('/accounts/:accountId', userController.showAccount);
+routerUser.patch('/accounts/:accountId', userController.updateAccount);
+
 
 
 

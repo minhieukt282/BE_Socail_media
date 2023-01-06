@@ -4,6 +4,7 @@ import {RelationshipRepo} from "../repo/relationshipRepo";
 import {AccountRepo} from "../repo/accountRepo";
 import {NotificationRepo} from "../repo/notificationRepo";
 import {LikeRepo} from "../repo/likeRepo";
+import bcrypt from "bcrypt";
 
 export class UserService {
     private random: Random
@@ -162,6 +163,7 @@ export class UserService {
             message: message
         }
     }
+
     showLike = async (): Promise<ResponseBody> => {
         const data = await this.likeRepo.findAll()
         return {
@@ -187,12 +189,23 @@ export class UserService {
             message: message
         }
     }
+
     showAccount = async (accountId: number): Promise<ResponseBody> => {
         const accountInfo = await this.accountRepo.findById(accountId)
         return {
             code: 200,
             message: "success",
             data: accountInfo
+        }
+    }
+
+    updateAccount = async (accountId: number, data: AccountRequest): Promise<ResponseBody> => {
+        const message = await this.accountRepo.update(accountId, data)
+        const dataUpdate = await this.accountRepo.findByIdUpdate(accountId)
+        return {
+            code: 200,
+            message: message,
+            data: dataUpdate
         }
     }
 }

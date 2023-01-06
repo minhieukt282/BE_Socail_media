@@ -156,6 +156,15 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
+    updateAccount = async (req:Request,res:Response): Promise<string | any>=>{
+        try {
+            let respBody = await this.userService.updateAccount(+req.params.accountId, req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
 }
 
 export default new UserController()
