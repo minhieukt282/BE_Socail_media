@@ -10,7 +10,12 @@ export class UserController {
 
     showFriends = async (req: Request | any, res: Response): Promise<void> => {
         try {
-            let accountId = req.decode.accountId
+            let accountId
+            if (+req.params.accountId !== +req.decode.accountId) {
+                accountId = +req.params.accountId
+            } else {
+                accountId = +req.decode.accountId
+            }
             let respBody = await this.userService.showFriends(accountId)
             res.status(respBody.code).json(respBody)
         } catch (err) {

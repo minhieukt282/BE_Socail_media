@@ -37,7 +37,7 @@ export class UserService {
     }
 
     showFriends = async (accountId: number): Promise<ResponseBody> => {
-        const friendsData = await this.getFriends(accountId, true)
+        const friendsData = await this.relationshipRepo.findByAccount(accountId)
         return {
             code: 200,
             message: "success",
@@ -49,7 +49,6 @@ export class UserService {
         data.accountReq = accountId
         data.accountRes = +data.accountRes
         data.relationshipId = this.random.randomNumber()
-        data.isAccept = false
         const relationshipId = await this.relationshipRepo.create(data)
         return {
             code: 201,
@@ -120,10 +119,12 @@ export class UserService {
     }
 
     updatePost = async (postId: number, data: PostsRequest): Promise<ResponseBody> => {
-        let message = await this.postRepo.update(postId, data)
+        const message = await this.postRepo.update(postId, data)
+        const dataUpdate = await this.postRepo.findById(postId)
         return {
             code: 200,
-            message: message
+            message: message,
+            data: dataUpdate
         }
     }
 
@@ -138,16 +139,16 @@ export class UserService {
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
         dataNotice.notificationId = this.random.randomNumber()
         if (dataNotice.type === "liked") {
-            dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} your status`
+            dataNotice.content = `${dataNotice.type} your status`
         }
         if (dataNotice.type === "commented") {
-            dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} on your status`
+            dataNotice.content = `${dataNotice.type} on your status`
         }
         if (dataNotice.type === "friends") {
-            dataNotice.content = `${dataNotice.displayName} has accepted your friend request`
+            dataNotice.content = ` has accepted your friend request`
         }
         if (dataNotice.type === "addFriends") {
-            dataNotice.content = `${dataNotice.displayName} sent a friend request`
+            dataNotice.content = ` sent a friend request`
         }
         const message = await this.notificationRepo.create(dataNotice)
         return {

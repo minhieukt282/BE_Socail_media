@@ -1101,7 +1101,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="319" parent="312" name="accountId">
-      <AutoIncrement>9146695934716041</AutoIncrement>
+      <AutoIncrement>15327723645360235</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1223,7 +1223,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="342" parent="315" name="notificationId">
-      <AutoIncrement>16260922602490057</AutoIncrement>
+      <AutoIncrement>16662169150729201</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1275,7 +1275,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="352" parent="316" name="postId">
-      <AutoIncrement>16690778301815293</AutoIncrement>
+      <AutoIncrement>16700319060013057</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1318,7 +1318,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="360" parent="317" name="relationshipId">
-      <AutoIncrement>1446449097224666</AutoIncrement>
+      <AutoIncrement>16679480931486071</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1333,7 +1333,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="363" parent="317" name="isAccept">
+    <column id="363" parent="317" name="isFriend">
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1350,7 +1350,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="366" parent="318" name="id">
-      <AutoIncrement>16248298391606881</AutoIncrement>
+      <AutoIncrement>16691955588141249</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>

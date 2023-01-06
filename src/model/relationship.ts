@@ -9,5 +9,5 @@ export class Relationship {
     @Column({type: 'bigint'})
     public accountRes: number
     @Column({type: "boolean", default: false})
-    public isAccept : boolean
+    public isFriend : boolean
 }

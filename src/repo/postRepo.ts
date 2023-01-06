@@ -48,6 +48,21 @@ export class PostRepo {
         return "update done"
     }
 
+    findById = async (postId: number): Promise<PostRepo> => {
+        let query = `select p.img        as imgPost,
+                            a.img        as imgAvt,
+                            p.timeUpdate as timePost,
+                            p.content    as contentPost,
+                            a.username,
+                            p.postId,
+                            a.accountId,
+                            p.status,
+                            a.displayName
+                     from post as p
+                              join account a on p.accountId = a.accountId
+                     where p.postId = ${postId}`
+        return await this.postRepo.query(query)
+    }
     delete = async (postId: number): Promise<string> => {
         await this.postRepo.delete(postId)
         return "delete done"
