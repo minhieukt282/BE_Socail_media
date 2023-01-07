@@ -100,7 +100,6 @@ export class UserService {
     }
 
     createPost = async (data: PostsRequest): Promise<ResponseBody> => {
-        data.postId = this.random.randomNumber();
         const post = await this.postRepo.create(data)
         return {
             code: 201,
