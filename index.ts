@@ -63,6 +63,15 @@ io.on("connection", (socket) => {
         }
     })
 
+    socket.on('addFriends', async (data) => {
+        const socketId = await socketService.findSocket(+data.accountReceiver)
+        if(socketId != null){
+            io.to(`${socketId.socketId}`).emit("getNotification", {
+                message: `${data.displayName} sent a friend request`
+            });
+        }
+    })
+
     socket.on("offline", async (data) => {
         await socketService.deleteSocket(data.accountId)
     });
