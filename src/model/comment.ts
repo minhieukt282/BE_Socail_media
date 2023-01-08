@@ -1,6 +1,6 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
-@Entity({name: 'comment'})
+@Entity({name: "comment"})
 export class Comment {
     @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly commentId: number

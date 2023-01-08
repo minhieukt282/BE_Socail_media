@@ -1,17 +1,22 @@
 import {AppDataSource} from "../data-source";
-import {Like} from "../model/like";
+import {LikePost} from "../model/like-post";
 
 export class LikeRepo {
     private likeRepo: any
 
     constructor() {
         AppDataSource.initialize().then(connection => {
-            this.likeRepo = connection.getRepository(Like)
+            this.likeRepo = connection.getRepository(LikePost)
         })
     }
 
     create = async (dataLike: LikeRequest): Promise<string> => {
         await this.likeRepo.save(dataLike)
+        return "create done"
+    }
+
+    save = async (like: LikePost): Promise<string> => {
+        await this.likeRepo.save(like)
         return "create done"
     }
 
