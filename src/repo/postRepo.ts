@@ -23,24 +23,25 @@ export class PostRepo {
                             a.displayName
                      from post as p
                               join account a on p.accountId = a.accountId
+                              join like_posts l on p.postId = l.postPostId
                      where p.postId = ${result.postId}`
         return await this.postRepo.query(query)
     }
 
+    savePost = async (post: Post): Promise<Post> => {
+        return await this.postRepo.save(post);
+    }
+
     findAll = async (): Promise<PostRepo> => {
-        const query = `select p.img        as imgPost,
-                            a.img        as imgAvt,
-                            p.timeUpdate as timePost,
-                            p.content    as contentPost,
-                            a.username,
-                            p.postId,
-                            a.accountId,
-                            p.status,
-                            a.displayName
-                     from post as p
-                              join account a on p.accountId = a.accountId
-                     order by timePost desc `
-        return await this.postRepo.query(query)
+        return await this.postRepo.find({
+            order: {
+                timeUpdate: "DESC"
+            },
+            relations: {
+                likes: true,
+                account: true,
+            },
+        })
     }
 
     update = async (postId: number, data: PostsRequest): Promise<string> => {
@@ -63,6 +64,11 @@ export class PostRepo {
                      where p.postId = ${postId}`
         return await this.postRepo.query(query)
     }
+
+    findOne = async (postId: number): Promise<Post> => {
+        return await this.postRepo.findOneBy({postId: postId})
+    }
+
     delete = async (postId: number): Promise<string> => {
         await this.postRepo.delete(postId)
         return "delete done"

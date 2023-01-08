@@ -4,6 +4,8 @@ import {RelationshipRepo} from "../repo/relationshipRepo";
 import {AccountRepo} from "../repo/accountRepo";
 import {NotificationRepo} from "../repo/notificationRepo";
 import {LikeRepo} from "../repo/likeRepo";
+import {LikePost} from "../model/like-post";
+import {Post} from "../model/post";
 
 export class UserService {
     private random: Random
@@ -48,7 +50,7 @@ export class UserService {
     makeFriend = async (accountId: number, data: FriendsRequest): Promise<ResponseBody> => {
         data.accountReq = accountId
         data.accountRes = +data.accountRes
-        // data.relationshipId = this.random.randomNumber()
+        data.relationshipId = this.random.randomNumber()
         const relationshipId = await this.relationshipRepo.create(data)
         return {
             code: 201,
@@ -100,11 +102,16 @@ export class UserService {
     }
 
     createPost = async (data: PostsRequest): Promise<ResponseBody> => {
-        const post = await this.postRepo.create(data)
+        const post = new Post();
+        post.status = data.status;
+        post.content = data.content;
+        post.img = data.img;
+        post.account = await this.accountRepo.findById(data.accountId);
+        const postSave = await this.postRepo.savePost(post);
         return {
             code: 201,
             message: "success",
-            data: post[0]
+            data: postSave
         }
     }
 
@@ -136,7 +143,7 @@ export class UserService {
     }
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
-        // dataNotice.notificationId = this.random.randomNumber()
+        dataNotice.notificationId = this.random.randomNumber()
         if (dataNotice.type === "liked") {
             dataNotice.content = `${dataNotice.type} your status`
         }
@@ -173,8 +180,13 @@ export class UserService {
     }
 
     createLike = async (dataLike: LikeRequest): Promise<ResponseBody> => {
-        // dataLike.likeId = this.random.randomNumber()
-        const message = await this.likeRepo.create(dataLike)
+        const post: Post = await this.postRepo.findOne(dataLike.postPostId);
+        console.log(post);
+        const like = new LikePost();
+        like.accountId = dataLike.accountId;
+        like.displayName = dataLike.displayName;
+        like.post = post;
+        const message = await this.likeRepo.save(like)
         return {
             code: 201,
             message: message
