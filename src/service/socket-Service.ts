@@ -13,7 +13,7 @@ export class SocketService {
 
     createSocket = async (accountId, socketId) => {
         let data = {
-            id: this.random.randomNumber(),
+            // id: this.random.randomNumber(),
             accountId: +accountId,
             socketId: socketId
         }
