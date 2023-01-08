@@ -1,4 +1,4 @@
-interface PostsRequest {
+interface PostRequest {
     postId?;
     accountId?: number;
     img?: string | null;

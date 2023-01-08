@@ -80,8 +80,8 @@ export class UserController {
 
     createPost = async (req: Request, res: Response): Promise<void> => {
         try {
-            let respBody = await this.userService.createPost(req.body)
-            res.status(respBody.code).json(respBody)
+            const post: PostRequest = req.body;
+            res.status(201).json(await this.userService.createPost(post))
         } catch (err) {
             res.status(500).json(err.message)
         }

@@ -10,7 +10,7 @@ export class PostRepo {
         })
     }
 
-    create = async (newPost: PostsRequest): Promise<Post> => {
+    create = async (newPost: PostRequest): Promise<Post> => {
         const result = await this.postRepo.save(newPost)
         const query = `select p.img        as imgPost,
                             a.img        as imgAvt,
@@ -44,7 +44,7 @@ export class PostRepo {
         })
     }
 
-    update = async (postId: number, data: PostsRequest): Promise<string> => {
+    update = async (postId: number, data: PostRequest): Promise<string> => {
         await this.postRepo.update({postId: postId}, data)
         return "update done"
     }
