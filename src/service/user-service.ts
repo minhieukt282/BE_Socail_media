@@ -101,17 +101,23 @@ export class UserService {
         }
     }
 
-    createPost = async (data: PostsRequest): Promise<ResponseBody> => {
+    createPost = async (data: PostRequest): Promise<ResponseBody> => {
+        if (!data.accountId) {
+            throw new Error('Account ID is required!');
+        }
+        const account = await this.accountRepo.findById(data.accountId);
+        if (account == null) {
+            throw new Error('Account not found');
+        }
         const post = new Post();
+        post.account = account;
         post.status = data.status;
         post.content = data.content;
         post.img = data.img;
-        post.account = await this.accountRepo.findById(data.accountId);
-        const postSave = await this.postRepo.savePost(post);
         return {
             code: 201,
             message: "success",
-            data: postSave
+            data: await this.postRepo.savePost(post)
         }
     }
 
@@ -124,7 +130,7 @@ export class UserService {
         }
     }
 
-    updatePost = async (postId: number, data: PostsRequest): Promise<ResponseBody> => {
+    updatePost = async (postId: number, data: PostRequest): Promise<ResponseBody> => {
         const message = await this.postRepo.update(postId, data)
         const dataUpdate = await this.postRepo.findById(postId)
         return {
