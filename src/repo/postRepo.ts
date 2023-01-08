@@ -11,8 +11,8 @@ export class PostRepo {
     }
 
     create = async (newPost: PostsRequest): Promise<Post> => {
-        let result =   await this.postRepo.save(newPost)
-        let query = `select p.img        as imgPost,
+        const result = await this.postRepo.save(newPost)
+        const query = `select p.img        as imgPost,
                             a.img        as imgAvt,
                             p.timeUpdate as timePost,
                             p.content    as contentPost,
@@ -28,7 +28,7 @@ export class PostRepo {
     }
 
     findAll = async (): Promise<PostRepo> => {
-        let query = `select p.img        as imgPost,
+        const query = `select p.img        as imgPost,
                             a.img        as imgAvt,
                             p.timeUpdate as timePost,
                             p.content    as contentPost,
@@ -67,5 +67,22 @@ export class PostRepo {
     delete = async (postId: number): Promise<string> => {
         await this.postRepo.delete(postId)
         return "delete done"
+    }
+
+    searchPost = async (searchKey: string): Promise<string> => {
+        const query = `select p.img        as imgPost,
+                              a.img        as imgAvt,
+                              p.timeUpdate as timePost,
+                              p.content    as contentPost,
+                              a.username,
+                              p.postId,
+                              a.accountId,
+                              p.status,
+                              a.displayName
+                       from post as p
+                                join account a on p.accountId = a.accountId
+                       where content like '%${searchKey}%'
+                       order by timePost desc`
+        return this.postRepo.query(query)
     }
 }

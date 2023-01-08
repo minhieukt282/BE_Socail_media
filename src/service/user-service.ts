@@ -38,7 +38,7 @@ export class UserService {
     }
 
     showFriends = async (accountId: number): Promise<ResponseBody> => {
-        const friendsData = await this.getFriends(accountId, true)
+        const friendsData = await this.relationshipRepo.findByAccount(accountId)
         return {
             code: 200,
             message: "success",
@@ -50,7 +50,6 @@ export class UserService {
         data.accountReq = accountId
         data.accountRes = +data.accountRes
         data.relationshipId = this.random.randomNumber()
-        data.isAccept = false
         const relationshipId = await this.relationshipRepo.create(data)
         return {
             code: 201,
@@ -71,16 +70,33 @@ export class UserService {
     acceptFriend = async (relationshipId: number): Promise<ResponseBody> => {
         const message = await this.relationshipRepo.update(relationshipId, true)
         return {
-            code: 201,
+            code: 200,
             message: message
         }
     }
 
     declineFriend = async (relationshipId: number): Promise<ResponseBody> => {
-        const message = await this.relationshipRepo.del(relationshipId)
+        const message = await this.relationshipRepo.deleteByRelationshipId(relationshipId)
         return {
-            code: 201,
+            code: 200,
             message: message
+        }
+    }
+
+    unfriend = async (accountReq: number, accountRes: number): Promise<ResponseBody> => {
+        const message = await this.relationshipRepo.deleteByAccountReq(accountReq, accountRes)
+        return {
+            code: 200,
+            message: message
+        }
+    }
+
+    showRelationship = async (): Promise<ResponseBody> => {
+        const relationships = await this.relationshipRepo.findAll()
+        return {
+            code: 200,
+            message: "success",
+            data: relationships
         }
     }
 
@@ -124,13 +140,16 @@ export class UserService {
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
         dataNotice.notificationId = this.random.randomNumber()
         if (dataNotice.type === "liked") {
-            dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} your status`
+            dataNotice.content = `${dataNotice.type} your status`
         }
         if (dataNotice.type === "commented") {
-            dataNotice.content = `${dataNotice.displayName} ${dataNotice.type} on your status`
+            dataNotice.content = `${dataNotice.type} on your status`
         }
         if (dataNotice.type === "friends") {
-            dataNotice.content = `${dataNotice.displayName} has accepted your friend request`
+            dataNotice.content = ` has accepted your friend request`
+        }
+        if (dataNotice.type === "addFriends") {
+            dataNotice.content = ` sent a friend request`
         }
         const message = await this.notificationRepo.create(dataNotice)
         return {
@@ -163,7 +182,6 @@ export class UserService {
             message: message
         }
     }
-
     showLike = async (): Promise<ResponseBody> => {
         const data = await this.likeRepo.findAll()
         return {
@@ -189,13 +207,25 @@ export class UserService {
             message: message
         }
     }
-
     showAccount = async (accountId: number): Promise<ResponseBody> => {
         const accountInfo = await this.accountRepo.findById(accountId)
         return {
             code: 200,
             message: "success",
             data: accountInfo
+        }
+    }
+
+    search = async (searchKey: string): Promise<ResponseBody> => {
+        const accounts = await this.accountRepo.searchAccount(searchKey)
+        const posts = await this.postRepo.searchPost(searchKey)
+        return {
+            code: 200,
+            message: "success",
+            data: {
+                listAccount: accounts,
+                listPost: posts
+            }
         }
     }
 

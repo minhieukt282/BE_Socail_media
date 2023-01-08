@@ -36,6 +36,13 @@ export class AccountRepo {
         })
     }
 
+    searchAccount = async (searchKey: string): Promise<Account> => {
+        const query = `select *
+                       from account
+                       where displayName like '%${searchKey}%' || username like '%${searchKey}%'`
+        return await this.accountRepo.query(query)
+    }
+
     findByIdUpdate = async (accountId: number): Promise<AccountRepo> => {
         let query = `
             select *from account

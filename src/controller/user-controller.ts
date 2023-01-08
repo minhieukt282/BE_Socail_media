@@ -10,7 +10,12 @@ export class UserController {
 
     showFriends = async (req: Request | any, res: Response): Promise<void> => {
         try {
-            let accountId = req.decode.accountId
+            let accountId
+            if (+req.params.accountId !== +req.decode.accountId) {
+                accountId = +req.params.accountId
+            } else {
+                accountId = +req.decode.accountId
+            }
             let respBody = await this.userService.showFriends(accountId)
             res.status(respBody.code).json(respBody)
         } catch (err) {
@@ -49,6 +54,24 @@ export class UserController {
     declineFriend = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.declineFriend(+req.params.relationshipId)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    unfriend = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.unfriend(+req.params.accountReq, +req.params.accountRes)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    showRelationship = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.showRelationship()
             res.status(respBody.code).json(respBody)
         } catch (err) {
             res.status(500).json(err.message)
@@ -151,6 +174,15 @@ export class UserController {
     showAccount = async (req: Request, res: Response): Promise<string | any> => {
         try {
             let respBody = await this.userService.showAccount(+req.params.accountId);
+            return res.status(respBody.code).json(respBody);
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    search = async (req: Request, res: Response): Promise<string | any> => {
+        try {
+            let respBody = await this.userService.search(req.params.search);
             return res.status(respBody.code).json(respBody);
         } catch (err) {
             res.status(500).json(err.message)
