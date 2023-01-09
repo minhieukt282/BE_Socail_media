@@ -228,7 +228,7 @@ export class UserService {
         }
     }
 
-    updateAccount = async (accountId: number, data: AccountRequest): Promise<ResponseBody> => {
+    updateAccount = async (accountId, data: AccountRequest): Promise<ResponseBody> => {
         const message = await this.accountRepo.update(accountId, data)
         const dataUpdate = await this.accountRepo.findByIdUpdate(accountId)
         return {
