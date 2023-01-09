@@ -22,9 +22,9 @@ routerUser.get('/notification', userController.showNotification);
 routerUser.delete('/notification/:accountSent/:postId/:type', userController.deleteNotification);
 
 routerUser.post('/likes', userController.createLike)
-routerUser.get('/likes', userController.showLike)
-routerUser.get('/likes/numbers', userController.showCountLike)
-routerUser.delete('/likes/:accountId/:postId', userController.deleteLike)
+// routerUser.get('/likes', userController.showLike)
+// routerUser.get('/likes/numbers', userController.showCountLike)
+routerUser.delete('/likes/:accountId/:postPostId', userController.deleteLike)
 
 routerUser.get('/accounts/:accountId', userController.showAccount)
 

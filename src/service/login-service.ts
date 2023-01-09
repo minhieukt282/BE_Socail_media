@@ -26,7 +26,6 @@ export class LoginService {
             }
         } else {
             data.password = await bcrypt.hash(data.password, 10)
-            // data.accountId = this.random.randomNumber()
             data.img = 'https://firebasestorage.googleapis.com/v0/b/image-c737d.appspot.com/o/images%2Fimages.jpg0c8e102d-88a1-4a36-8715-08c4cd6a4966?alt=media&token=7b526c61-f551-470a-9752-77397b608496'
             data.birthday = this.random.getTime()
             const account = await this.accountRepo.create(data)

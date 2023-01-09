@@ -114,10 +114,12 @@ export class UserService {
         post.status = data.status;
         post.content = data.content;
         post.img = data.img;
+        await this.postRepo.savePost(post)
+        const listPost = await this.postRepo.findAll()
         return {
             code: 201,
             message: "success",
-            data: await this.postRepo.savePost(post)
+            data: listPost[0]
         }
     }
 
@@ -187,7 +189,6 @@ export class UserService {
 
     createLike = async (dataLike: LikeRequest): Promise<ResponseBody> => {
         const post: Post = await this.postRepo.findOne(dataLike.postPostId);
-        console.log(post);
         const like = new LikePost();
         like.accountId = dataLike.accountId;
         like.displayName = dataLike.displayName;
