@@ -48,7 +48,7 @@ export class UserService {
     makeFriend = async (accountId: number, data: FriendsRequest): Promise<ResponseBody> => {
         data.accountReq = accountId
         data.accountRes = +data.accountRes
-        data.relationshipId = this.random.randomNumber()
+        // data.relationshipId = this.random.randomNumber()
         const relationshipId = await this.relationshipRepo.create(data)
         return {
             code: 201,
@@ -100,7 +100,7 @@ export class UserService {
     }
 
     createPost = async (data: PostsRequest): Promise<ResponseBody> => {
-        data.postId = this.random.randomNumber();
+        // data.postId = this.random.randomNumber();
         const post = await this.postRepo.create(data)
         return {
             code: 201,
@@ -137,7 +137,7 @@ export class UserService {
     }
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
-        dataNotice.notificationId = this.random.randomNumber()
+        // dataNotice.notificationId = this.random.randomNumber()
         if (dataNotice.type === "liked") {
             dataNotice.content = `${dataNotice.type} your status`
         }
@@ -174,7 +174,7 @@ export class UserService {
     }
 
     createLike = async (dataLike: LikeRequest): Promise<ResponseBody> => {
-        dataLike.likeId = this.random.randomNumber()
+        // dataLike.likeId = this.random.randomNumber()
         const message = await this.likeRepo.create(dataLike)
         return {
             code: 201,
