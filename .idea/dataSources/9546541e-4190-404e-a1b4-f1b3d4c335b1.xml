@@ -1123,6 +1123,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </table>
     <column id="326" parent="319" name="accountId">
       <AutoIncrement>1635857518893643</AutoIncrement>
+    <column id="319" parent="312" name="accountId">
+      <AutoIncrement>15327723645360235</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1245,6 +1247,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="349" parent="322" name="notificationId">
       <AutoIncrement>1</AutoIncrement>
+    <column id="342" parent="315" name="notificationId">
+      <AutoIncrement>16662169150729201</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1297,6 +1301,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="359" parent="323" name="postId">
       <AutoIncrement>1647565242955151</AutoIncrement>
+    <column id="352" parent="316" name="postId">
+      <AutoIncrement>16700319060013057</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1338,6 +1344,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
+    <column id="360" parent="317" name="relationshipId">
+      <AutoIncrement>16679480931486071</AutoIncrement>
     <column id="367" parent="324" name="relationshipId">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
@@ -1355,6 +1363,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>3</Position>
     </column>
     <column id="370" parent="324" name="isAccept">
+    <column id="363" parent="317" name="isFriend">
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1372,6 +1381,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </key>
     <column id="373" parent="325" name="id">
       <AutoIncrement>1</AutoIncrement>
+    <column id="366" parent="318" name="id">
+      <AutoIncrement>16691955588141249</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>

@@ -10,19 +10,32 @@ export class RelationshipRepo {
         })
     }
 
+    findAll = async (): Promise<Relationship> => {
+        return await this.relationshipRepo.find()
+    }
+
+    findByAccount = async (accountId: number) => {
+        const query = `select a.accountId, a.username, a.displayName, a.img, a.birthday, a.location, a.status
+                       from relationship as r
+                                join account a on a.accountId = r.accountReq or a.accountId = r.accountRes
+                       where isFriend = true
+                         and (r.accountRes = ${accountId} or r.accountReq = ${accountId})`
+        return await this.relationshipRepo.query(query)
+    }
+
     findById = async (accountId: number, status: boolean) => {
         if (status) {
             return await this.relationshipRepo.find({
                 where: [
-                    {accountReq: accountId, isAccept: status},
-                    {accountRes: accountId, isAccept: status}
+                    {accountReq: accountId, isFriend: status},
+                    {accountRes: accountId, isFriend: status}
                 ]
             })
         } else {
             return await this.relationshipRepo.find({
                 where: {
                     accountRes: accountId,
-                    isAccept: status
+                    isFriend: status
                 }
             })
         }
@@ -33,17 +46,24 @@ export class RelationshipRepo {
         return result.relationshipId
     }
 
-    update = async (relationshipId: number, data: boolean): Promise<string> => {
+    update = async (relationshipId: number, isFriend: boolean): Promise<string> => {
         const relationshipUpdate = await this.relationshipRepo.find({where: {relationshipId: relationshipId}})
-        relationshipUpdate[0].isAccept = data
+        relationshipUpdate[0].isFriend = isFriend
         await this.relationshipRepo.save(relationshipUpdate)
         return "update done"
     }
 
-    del = async (relationshipId: number): Promise<string> => {
+    deleteByRelationshipId = async (relationshipId: number): Promise<string> => {
         await this.relationshipRepo.delete(relationshipId)
         return "delete done"
     }
 
-
+    deleteByAccountReq = async (accountReq: number, accountRes: number): Promise<string> => {
+        const query = `delete
+                       from relationship
+                       where (accountReq = ${accountReq} && accountRes = ${accountRes}) ||
+                             (accountReq = ${accountRes} && accountRes = ${accountReq})`
+        await this.relationshipRepo.query(query)
+        return "delete done"
+    }
 }
