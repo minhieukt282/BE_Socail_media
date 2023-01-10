@@ -1,5 +1,6 @@
 import {AppDataSource} from "../data-source";
 import {Post} from "../model/post";
+import {Like} from "typeorm";
 
 export class PostRepo {
     private postRepo: any
@@ -10,7 +11,7 @@ export class PostRepo {
         })
     }
 
-    create = async (newPost: PostsRequest): Promise<Post> => {
+    create = async (newPost: PostRequest): Promise<Post> => {
         const result = await this.postRepo.save(newPost)
         const query = `select p.img        as imgPost,
                             a.img        as imgAvt,
@@ -23,24 +24,30 @@ export class PostRepo {
                             a.displayName
                      from post as p
                               join account a on p.accountId = a.accountId
+                              join like_posts l on p.postId = l.postPostId
                      where p.postId = ${result.postId}`
         return await this.postRepo.query(query)
     }
 
+    savePost = async (post: Post): Promise<Post> => {
+        return await this.postRepo.save(post);
+    }
+
     findAll = async (): Promise<PostRepo> => {
-        const query = `select p.img        as imgPost,
-                            a.img        as imgAvt,
-                            p.timeUpdate as timePost,
-                            p.content    as contentPost,
-                            a.username,
-                            p.postId,
-                            a.accountId,
-                            p.status,
-                            a.displayName
-                     from post as p
-                              join account a on p.accountId = a.accountId
-                     order by timePost desc `
-        return await this.postRepo.query(query)
+        return await this.postRepo.find({
+            order: {
+                timeUpdate: "DESC"
+            },
+            relations: {
+                likes: true,
+                account: true,
+            },
+        })
+    }
+
+    update = async (postId: number, data: PostRequest): Promise<string> => {
+        await this.postRepo.update({postId: postId}, data)
+        return "update done"
     }
 
     findById = async (postId: number): Promise<PostRepo> => {
@@ -59,9 +66,8 @@ export class PostRepo {
         return await this.postRepo.query(query)
     }
 
-    update = async (postId: number, data: PostsRequest): Promise<string> => {
-        await this.postRepo.update({postId: postId}, data)
-        return "update done"
+    findOne = async (postId: number): Promise<Post> => {
+        return await this.postRepo.findOneBy({postId: postId})
     }
 
     delete = async (postId: number): Promise<string> => {
@@ -70,19 +76,15 @@ export class PostRepo {
     }
 
     searchPost = async (searchKey: string): Promise<string> => {
-        const query = `select p.img        as imgPost,
-                              a.img        as imgAvt,
-                              p.timeUpdate as timePost,
-                              p.content    as contentPost,
-                              a.username,
-                              p.postId,
-                              a.accountId,
-                              p.status,
-                              a.displayName
-                       from post as p
-                                join account a on p.accountId = a.accountId
-                       where content like '%${searchKey}%'
-                       order by timePost desc`
-        return this.postRepo.query(query)
+        return await this.postRepo.find({
+            content: Like(`%${searchKey}%`),
+            order: {
+                timeUpdate: "DESC"
+            },
+            relations: {
+                likes: true,
+                account: true,
+            },
+        })
     }
 }

@@ -1,6 +1,6 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
-@Entity({name: 'socket'})
+@Entity({name: "socket"})
 export class Socket {
     @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly id: number

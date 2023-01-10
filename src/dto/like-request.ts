@@ -1,5 +1,6 @@
 interface LikeRequest {
-    likeId?: number
-    accountId: number,
-    postId: number
+    likeId?: number;
+    accountId: number;
+    postPostId: number;
+    displayName: string;
 }

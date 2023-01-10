@@ -1,6 +1,8 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {LikePost} from "./like-post";
+import {Post} from "./post";
 
-@Entity({name: 'account'})
+@Entity({name: "account"})
 export class Account {
     @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly accountId: number
@@ -18,4 +20,7 @@ export class Account {
     public location: string
     @Column({type: "boolean", default: false})
     public status: boolean
+
+    @OneToMany(() => Post, (post) => post.account)
+    posts: Post[]
 }

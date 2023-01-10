@@ -1,17 +1,23 @@
 import {AppDataSource} from "../data-source";
-import {Like} from "../model/like";
+import {LikePost} from "../model/like-post";
 
 export class LikeRepo {
     private likeRepo: any
 
     constructor() {
         AppDataSource.initialize().then(connection => {
-            this.likeRepo = connection.getRepository(Like)
+            this.likeRepo = connection.getRepository(LikePost)
         })
     }
 
     create = async (dataLike: LikeRequest): Promise<string> => {
+        console.log(dataLike)
         await this.likeRepo.save(dataLike)
+        return "create done"
+    }
+
+    save = async (like: LikePost): Promise<string> => {
+        await this.likeRepo.save(like)
         return "create done"
     }
 
@@ -27,9 +33,17 @@ export class LikeRepo {
     }
 
     delete = async (dataLike): Promise<string> => {
-        const query = `DELETE
-                       FROM \`like\` as l
-                       WHERE l.accountId = ${dataLike.accountId} && l.postId = ${dataLike.postId}`
+        let query
+        if (dataLike.accountId !== 'undefined') {
+            query = `delete
+                     from like_post
+                     where accountId = ${dataLike.accountId}
+                       and postPostId = ${dataLike.postPostId}`
+        } else {
+            query = `delete
+                     from like_post
+                     where postPostId = ${dataLike.postPostId}`
+        }
         await this.likeRepo.query(query)
         return "delete done"
     }

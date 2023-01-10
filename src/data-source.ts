@@ -1,4 +1,11 @@
 import {DataSource} from "typeorm";
+import {Account} from "./model/account";
+import {Comment} from "./model/comment";
+import {LikePost} from "./model/like-post";
+import {Post} from "./model/post";
+import {Notification} from "./model/notification";
+import {Relationship} from "./model/relationship";
+import {Socket} from "./model/socket";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -6,7 +13,15 @@ export const AppDataSource = new DataSource({
     port: 3306,
     username: "root",
     password: "123456",
-    database: "socialmedia",
-    synchronize: true,
-    entities: ["dist/src/model/*.js"]
+    database: "social_media",
+    synchronize: false,
+    entities: [
+        Account,
+        Comment,
+        LikePost,
+        Post,
+        Notification,
+        Relationship,
+        Socket,
+    ],
 })
