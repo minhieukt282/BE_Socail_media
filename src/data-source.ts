@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "123456",
     database: "social_media",
-    synchronize: false,
+    synchronize: true,
     entities: [
         Account,
         Comment,

@@ -6,6 +6,8 @@ import {NotificationRepo} from "../repo/notificationRepo";
 import {LikeRepo} from "../repo/likeRepo";
 import {LikePost} from "../model/like-post";
 import {Post} from "../model/post";
+import {Comment} from "../model/comment";
+import {CommentRepo} from "../repo/commentRepo";
 
 export class UserService {
     private random: Random
@@ -14,6 +16,7 @@ export class UserService {
     private postRepo: PostRepo
     private notificationRepo: NotificationRepo
     private likeRepo: LikeRepo
+    private commentRepo: CommentRepo
 
     constructor() {
         this.random = new Random()
@@ -22,6 +25,7 @@ export class UserService {
         this.postRepo = new PostRepo()
         this.notificationRepo = new NotificationRepo()
         this.likeRepo = new LikeRepo()
+        this.commentRepo = new CommentRepo()
     }
 
     getFriends = async (accountId: number, status: boolean): Promise<any> => {
@@ -50,7 +54,6 @@ export class UserService {
     makeFriend = async (accountId: number, data: FriendsRequest): Promise<ResponseBody> => {
         data.accountReq = accountId
         data.accountRes = +data.accountRes
-        data.relationshipId = this.random.randomNumber()
         const relationshipId = await this.relationshipRepo.create(data)
         return {
             code: 201,
@@ -151,7 +154,6 @@ export class UserService {
     }
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
-        dataNotice.notificationId = this.random.randomNumber()
         if (dataNotice.type === "liked") {
             dataNotice.content = `${dataNotice.type} your status`
         }
@@ -224,6 +226,31 @@ export class UserService {
             message: message
         }
     }
+
+    createComment = async (dataComment: CommentRequest): Promise<ResponseBody> => {
+        const post: Post = await this.postRepo.findOne(dataComment.postPostId);
+        const comment = new Comment();
+        comment.accountId = dataComment.accountId;
+        comment.displayName = dataComment.displayName;
+        comment.img = dataComment.img;
+        comment.comment = dataComment.comment;
+        comment.post = post;
+        const message = await this.commentRepo.save(comment)
+        return {
+            code: 201,
+            message: message
+        }
+    }
+
+    deleteComment = async (dataComment: any): Promise<ResponseBody> => {
+        const message = await this.commentRepo.delete(dataComment)
+        return {
+            code: 200,
+            message: message
+        }
+    }
+
+
     showAccount = async (accountId: number): Promise<ResponseBody> => {
         const accountInfo = await this.accountRepo.findById(accountId)
         return {

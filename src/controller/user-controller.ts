@@ -177,6 +177,23 @@ export class UserController {
         }
     }
 
+    createComment = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.createComment(req.body);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    deleteComment = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.deleteComment(req.params);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
     showAccount = async (req: Request, res: Response): Promise<string | any> => {
         try {
             let respBody = await this.userService.showAccount(+req.params.accountId);
