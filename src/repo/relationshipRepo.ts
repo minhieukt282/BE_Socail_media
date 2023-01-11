@@ -15,7 +15,15 @@ export class RelationshipRepo {
     }
 
     findByAccount = async (accountId: number) => {
-        const query = `select a.accountId, a.username, a.displayName, a.img, a.birthday, a.location, a.status
+        const query = `select a.accountId,
+                              a.username,
+                              a.displayName,
+                              a.img,
+                              a.birthday,
+                              a.location,
+                              a.status,
+                              r.relationshipId,
+                              r.isFriend
                        from relationship as r
                                 join account a on a.accountId = r.accountReq or a.accountId = r.accountRes
                        where isFriend = true

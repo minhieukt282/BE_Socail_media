@@ -33,6 +33,11 @@ routerUser.get('/accounts/:accountId', userController.showAccount)
 
 routerUser.get('/search/:search', userController.search)
 
+routerUser.post('/messages', userController.createMessage)
+routerUser.get('/messages', userController.showMessage)
+
+
+
 
 
 
