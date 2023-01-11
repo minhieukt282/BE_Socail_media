@@ -1,5 +1,4 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {LikePost} from "./like-post";
 import {Post} from "./post";
 
 @Entity({name: "account"})

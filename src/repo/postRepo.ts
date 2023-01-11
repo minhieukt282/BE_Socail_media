@@ -40,7 +40,8 @@ export class PostRepo {
             },
             relations: {
                 likes: true,
-                account: true,
+                comments: true,
+                account: true
             },
         })
     }
