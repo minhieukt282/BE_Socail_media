@@ -11,7 +11,7 @@ export class Notification {
     @Column({type: 'bigint'})
     public accountReceiver: number
     @Column({type: 'bigint'})
-    public postId: number
+    public postPostId: number
     @Column({type: 'text'})
     public content: string
     @Column({type: 'timestamp', default: () => "CURRENT_TIMESTAMP"})

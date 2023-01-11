@@ -151,7 +151,6 @@ export class UserService {
     }
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
-        dataNotice.notificationId = this.random.randomNumber()
         if (dataNotice.type === "liked") {
             dataNotice.content = `${dataNotice.type} your status`
         }
