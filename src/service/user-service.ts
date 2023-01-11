@@ -6,6 +6,7 @@ import {NotificationRepo} from "../repo/notificationRepo";
 import {LikeRepo} from "../repo/likeRepo";
 import {LikePost} from "../model/like-post";
 import {Post} from "../model/post";
+import bcrypt from "bcrypt";
 
 export class UserService {
     private random: Random
@@ -244,4 +245,16 @@ export class UserService {
             }
         }
     }
+
+    updateAccount = async (accountId, data: AccountRequest): Promise<ResponseBody> => {
+        const message = await this.accountRepo.update(accountId, data)
+        const dataUpdate = await this.accountRepo.findByIdUpdate(accountId)
+        return {
+            code: 200,
+            message: message,
+            data: dataUpdate
+        }
+    }
+
+
 }

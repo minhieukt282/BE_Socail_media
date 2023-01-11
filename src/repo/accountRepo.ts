@@ -14,8 +14,8 @@ export class AccountRepo {
         return await this.accountRepo.save(newAccount)
     }
 
-    update = async (data: AccountRequest): Promise<string> => {
-        await this.accountRepo.save(data)
+    update = async (accountId: number, data: AccountRequest): Promise<string> => {
+        await this.accountRepo.update({accountId: accountId}, data)
         return "update done"
     }
 
@@ -40,6 +40,14 @@ export class AccountRepo {
         const query = `select *
                        from account
                        where displayName like '%${searchKey}%' || username like '%${searchKey}%'`
+        return await this.accountRepo.query(query)
+    }
+
+    findByIdUpdate = async (accountId: number): Promise<AccountRepo> => {
+        let query = `
+            select *from account
+            where accountId = ${accountId};
+        `
         return await this.accountRepo.query(query)
     }
 }

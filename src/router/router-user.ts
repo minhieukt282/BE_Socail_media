@@ -26,9 +26,10 @@ routerUser.post('/likes', userController.createLike)
 // routerUser.get('/likes/numbers', userController.showCountLike)
 routerUser.delete('/likes/:accountId/:postPostId', userController.deleteLike)
 
-routerUser.get('/accounts/:accountId', userController.showAccount)
-
 routerUser.get('/search/:search', userController.search)
+routerUser.get('/accounts/:accountId', userController.showAccount);
+routerUser.patch('/accounts', userController.updateAccount);
+
 
 
 
