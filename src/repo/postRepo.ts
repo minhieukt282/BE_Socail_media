@@ -1,5 +1,6 @@
 import {AppDataSource} from "../data-source";
 import {Post} from "../model/post";
+import {Like} from "typeorm";
 
 export class PostRepo {
     private postRepo: any
@@ -39,7 +40,8 @@ export class PostRepo {
             },
             relations: {
                 likes: true,
-                account: true,
+                comments: true,
+                account: true
             },
         })
     }
@@ -75,19 +77,15 @@ export class PostRepo {
     }
 
     searchPost = async (searchKey: string): Promise<string> => {
-        const query = `select p.img        as imgPost,
-                              a.img        as imgAvt,
-                              p.timeUpdate as timePost,
-                              p.content    as contentPost,
-                              a.username,
-                              p.postId,
-                              a.accountId,
-                              p.status,
-                              a.displayName
-                       from post as p
-                                join account a on p.accountId = a.accountId
-                       where content like '%${searchKey}%'
-                       order by timePost desc`
-        return this.postRepo.query(query)
+        return await this.postRepo.find({
+            content: Like(`%${searchKey}%`),
+            order: {
+                timeUpdate: "DESC"
+            },
+            relations: {
+                likes: true,
+                account: true,
+            },
+        })
     }
 }

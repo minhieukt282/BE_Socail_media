@@ -86,6 +86,7 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
     showPost = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.showPost();
@@ -94,6 +95,7 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
     updatePost = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.updatePost(+req.params.postId, req.body)
@@ -102,6 +104,7 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
     deletePost = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.deletePost(+req.params.postId);
@@ -119,6 +122,7 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
     showNotification = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.showNotification();
@@ -145,6 +149,7 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
     showLike = async (req: Request, res: Response): Promise<void> => {
         try {
             let respBody = await this.userService.showLike();
@@ -171,6 +176,24 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
+    createComment = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.createComment(req.body);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    deleteComment = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.userService.deleteComment(req.params);
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
     showAccount = async (req: Request, res: Response): Promise<string | any> => {
         try {
             let respBody = await this.userService.showAccount(+req.params.accountId);
