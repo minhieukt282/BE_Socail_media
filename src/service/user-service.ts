@@ -8,6 +8,8 @@ import {LikePost} from "../model/like-post";
 import {Post} from "../model/post";
 import {Comment} from "../model/comment";
 import {CommentRepo} from "../repo/commentRepo";
+import {MessageRepo} from "../repo/messageRepo";
+import {SocketRepo} from "../repo/socketRepo";
 
 export class UserService {
     private random: Random
@@ -17,6 +19,8 @@ export class UserService {
     private notificationRepo: NotificationRepo
     private likeRepo: LikeRepo
     private commentRepo: CommentRepo
+    private messageRepo: MessageRepo
+    private socketRepo: SocketRepo
 
     constructor() {
         this.random = new Random()
@@ -26,6 +30,8 @@ export class UserService {
         this.notificationRepo = new NotificationRepo()
         this.likeRepo = new LikeRepo()
         this.commentRepo = new CommentRepo()
+        this.messageRepo = new MessageRepo()
+        this.socketRepo = new SocketRepo()
     }
 
     getFriends = async (accountId: number, status: boolean): Promise<any> => {
@@ -166,6 +172,9 @@ export class UserService {
         if (dataNotice.type === "addFriends") {
             dataNotice.content = ` sent a friend request`
         }
+        if (dataNotice.type === "message") {
+            dataNotice.content = ` sent a message`
+        }
         const message = await this.notificationRepo.create(dataNotice)
         return {
             code: 201,
@@ -260,6 +269,16 @@ export class UserService {
         }
     }
 
+    updateAccount = async (accountId, data: AccountRequest): Promise<ResponseBody> => {
+        const message = await this.accountRepo.update(accountId, data)
+        const dataUpdate = await this.accountRepo.findByIdUpdate(accountId)
+        return {
+            code: 200,
+            message: message,
+            data: dataUpdate
+        }
+    }
+
     search = async (searchKey: string): Promise<ResponseBody> => {
         const accounts = await this.accountRepo.searchAccount(searchKey)
         const posts = await this.postRepo.searchPost(searchKey)
@@ -271,5 +290,35 @@ export class UserService {
                 listPost: posts
             }
         }
+    }
+
+    createMessage = async (dataMessage): Promise<ResponseBody> => {
+        await this.messageRepo.create(dataMessage)
+        return {
+            code: 201,
+            message: "success",
+        }
+    }
+
+    showMessage = async (): Promise<ResponseBody> => {
+        const message = await this.messageRepo.findAll()
+        return {
+            code: 201,
+            message: "success",
+            data: message
+        }
+    }
+
+    findSocketId = async (accountId, timeSent) => {
+        const message = await this.messageRepo.findByAccountId(accountId, timeSent)
+        const listAccount = await this.messageRepo.findByRoomId(message[0].roomId)
+        let findAccount
+        for (let i = 0; i < listAccount.length; i++) {
+            if (listAccount[i].accountId != accountId) {
+                findAccount = listAccount[i].accountId
+                break
+            }
+        }
+        return await this.socketRepo.findSocketId(findAccount)
     }
 }

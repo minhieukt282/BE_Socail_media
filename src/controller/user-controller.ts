@@ -203,9 +203,36 @@ export class UserController {
         }
     }
 
+    updateAccount = async (req:Request,res:Response): Promise<string | any>=>{
+        try {
+            let respBody = await this.userService.updateAccount(req.body.accountId, req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
     search = async (req: Request, res: Response): Promise<string | any> => {
         try {
             let respBody = await this.userService.search(req.params.search);
+            return res.status(respBody.code).json(respBody);
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    createMessage = async (req: Request, res: Response): Promise<string | any> => {
+        try {
+            let respBody = await this.userService.createMessage(req.body);
+            return res.status(respBody.code).json(respBody);
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+
+    showMessage = async (req: Request, res: Response): Promise<string | any> => {
+        try {
+            let respBody = await this.userService.showMessage();
             return res.status(respBody.code).json(respBody);
         } catch (err) {
             res.status(500).json(err.message)
