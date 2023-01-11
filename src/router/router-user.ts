@@ -30,6 +30,7 @@ routerUser.post('/comments', userController.createComment)
 routerUser.delete('/comments/:accountId/:postPostId/:commentId', userController.deleteComment)
 
 routerUser.get('/accounts/:accountId', userController.showAccount)
+routerUser.patch('/accounts', userController.updateAccount);
 
 routerUser.get('/search/:search', userController.search)
 

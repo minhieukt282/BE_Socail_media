@@ -14,14 +14,21 @@ export class AccountRepo {
         return await this.accountRepo.save(newAccount)
     }
 
-    update = async (data: AccountRequest): Promise<string> => {
-        await this.accountRepo.save(data)
+    update = async (accountId: number, data: AccountRequest): Promise<string> => {
+        await this.accountRepo.update({accountId: accountId}, data)
         return "update done"
     }
 
     del = async (accountId: number): Promise<string> => {
         await this.accountRepo.delete(accountId)
         return "delete done"
+    }
+
+    findByIdUpdate = async (accountId: number): Promise<AccountRepo> => {
+        let query = `select *
+                     from account
+                     where accountId = ${accountId}        `
+        return await this.accountRepo.query(query)
     }
 
     findById = async (id: number): Promise<Account> => {
