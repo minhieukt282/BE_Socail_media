@@ -6,6 +6,7 @@ import cors from "cors";
 import {router} from "./src/router/router";
 import {Server} from "socket.io"
 import {SocketService} from "./src/service/socket-Service"
+import {UserService} from "./src/service/user-service";
 
 const app = express()
 app.use(express.json())
@@ -25,6 +26,7 @@ const io = new Server({
     }
 })
 const socketService = new SocketService()
+const userService = new UserService()
 
 io.on("connection", (socket) => {
     socket.on('online', async (data) => {
@@ -56,7 +58,7 @@ io.on("connection", (socket) => {
 
     socket.on('acceptFriend', async (data) => {
         const socketId = await socketService.findSocket(+data.accountReceiver)
-        if(socketId != null){
+        if (socketId != null) {
             io.to(`${socketId.socketId}`).emit("getNotification", {
                 message: `${data.displayName} has accepted your friend request`
             });
@@ -65,17 +67,39 @@ io.on("connection", (socket) => {
 
     socket.on('addFriends', async (data) => {
         const socketId = await socketService.findSocket(+data.accountReceiver)
-        if(socketId != null){
+        if (socketId != null) {
             io.to(`${socketId.socketId}`).emit("getNotification", {
                 message: `${data.displayName} sent a friend request`
             });
         }
     })
 
+    socket.on('findUser', async (data) => {
+        const listSocket = await socketService.findAllSocket()
+        for (let i = 0; i < listSocket.length; i++) {
+            if (data.accountId === listSocket[i].accountId) {
+                listSocket.splice(i, 1)
+                break
+            }
+        }
+        socket.emit('userOnline', {listUser: listSocket});
+    })
+
     socket.on("offline", async (data) => {
         await socketService.deleteSocket(data.accountId)
     });
-    socket.on("disconnect", ()=>{
+
+    socket.on('sentMessage', async (data) => {
+        await userService.createMessage(data)
+        const socketId = await userService.findSocketId(data.accountId, data.timeSent)
+        if (socketId != null) {
+            io.to(`${socketId.socketId}`).emit("getNotification", {
+                message: `sent a message`
+            });
+        }
+    })
+
+    socket.on("disconnect", () => {
 
     })
 });

@@ -6,6 +6,7 @@ import {Post} from "./model/post";
 import {Notification} from "./model/notification";
 import {Relationship} from "./model/relationship";
 import {Socket} from "./model/socket";
+import {Message} from "./model/message";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -23,5 +24,6 @@ export const AppDataSource = new DataSource({
         Notification,
         Relationship,
         Socket,
+        Message
     ],
 })

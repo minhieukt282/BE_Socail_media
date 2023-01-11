@@ -36,6 +36,11 @@ routerUser.get('/accounts/:accountId', userController.showAccount);
 routerUser.patch('/accounts', userController.updateAccount);
 
 
+routerUser.post('/messages', userController.createMessage)
+routerUser.get('/messages', userController.showMessage)
+
+
+
 
 
 
