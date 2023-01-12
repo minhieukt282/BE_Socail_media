@@ -24,6 +24,13 @@ export class AccountRepo {
         return "delete done"
     }
 
+    findByIdUpdate = async (accountId: number): Promise<AccountRepo> => {
+        let query = `select *
+                     from account
+                     where accountId = ${accountId}        `
+        return await this.accountRepo.query(query)
+    }
+
     findById = async (id: number): Promise<Account> => {
         return await this.accountRepo.findOneById(id)
     }
