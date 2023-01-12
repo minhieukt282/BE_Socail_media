@@ -18,10 +18,10 @@ export class SocketRepo {
         return await this.socketRepo.findOneBy({accountId: accountId + ""})
     }
 
-    delete = async (accountId: number): Promise<string> => {
+    delete = async (socketId: string): Promise<string> => {
         const query = `DELETE
                        FROM socket
-                       WHERE accountId = ${accountId}`
+                       WHERE socketId = '${socketId}'`
         await this.socketRepo.query(query)
         return "delete done"
     }
@@ -30,5 +30,8 @@ export class SocketRepo {
                      SET socketId = '${socketId}'
                      WHERE accountId = ${accountId} `
         await this.socketRepo.query(query)
+    }
+    findAll = async () => {
+        return await this.socketRepo.find()
     }
 }

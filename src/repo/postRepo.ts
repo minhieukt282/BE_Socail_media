@@ -14,18 +14,18 @@ export class PostRepo {
     create = async (newPost: PostRequest): Promise<Post> => {
         const result = await this.postRepo.save(newPost)
         const query = `select p.img        as imgPost,
-                            a.img        as imgAvt,
-                            p.timeUpdate as timePost,
-                            p.content    as contentPost,
-                            a.username,
-                            p.postId,
-                            a.accountId,
-                            p.status,
-                            a.displayName
-                     from post as p
-                              join account a on p.accountId = a.accountId
-                              join like_posts l on p.postId = l.postPostId
-                     where p.postId = ${result.postId}`
+                              a.img        as imgAvt,
+                              p.timeUpdate as timePost,
+                              p.content    as contentPost,
+                              a.username,
+                              p.postId,
+                              a.accountId,
+                              p.status,
+                              a.displayName
+                       from post as p
+                                join account a on p.accountId = a.accountId
+                                join like_posts l on p.postId = l.postPostId
+                       where p.postId = ${result.postId}`
         return await this.postRepo.query(query)
     }
 

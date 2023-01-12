@@ -31,7 +31,13 @@ routerUser.delete('/comments/:accountId/:postPostId/:commentId', userController.
 
 routerUser.get('/accounts/:accountId', userController.showAccount)
 routerUser.patch('/accounts', userController.updateAccount);
+
 routerUser.get('/search/:search', userController.search)
+
+routerUser.post('/messages', userController.createMessage)
+routerUser.get('/messages', userController.showMessage)
+
+
 
 
 

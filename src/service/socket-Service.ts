@@ -13,7 +13,6 @@ export class SocketService {
 
     createSocket = async (accountId, socketId) => {
         let data = {
-            // id: this.random.randomNumber(),
             accountId: +accountId,
             socketId: socketId
         }
@@ -29,7 +28,12 @@ export class SocketService {
     }
 
     deleteSocket = async (accountId) => {
-        await this.socketRepo.delete(accountId)
+        const listSocket = await this.findSocket(accountId)
+        await this.socketRepo.delete(listSocket.socketId)
+    }
+
+    findAllSocket = async () => {
+        return await this.socketRepo.findAll()
     }
 
 }
