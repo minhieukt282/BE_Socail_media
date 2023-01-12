@@ -14,6 +14,7 @@ export class SocketRepo {
         await this.socketRepo.save(newData)
         return "create done"
     }
+    
     findSocketId = async (accountId) => {
         return await this.socketRepo.findOneBy({accountId: accountId + ""})
     }

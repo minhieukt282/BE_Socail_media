@@ -1,0 +1,36 @@
+Index: index.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import express from 'express'\r\nimport bodyParser from \"body-parser\";\r\nimport cookieParser from 'cookie-parser';\r\nimport fileUpload from 'express-fileupload';\r\nimport cors from \"cors\";\r\nimport {router} from \"./src/router/router\";\r\nimport {Server} from \"socket.io\"\r\nimport {SocketService} from \"./src/service/socket-Service\"\r\nimport {UserService} from \"./src/service/user-service\";\r\n\r\nconst app = express()\r\napp.use(express.json())\r\napp.use(cors())\r\napp.use(bodyParser.urlencoded({extended: true}))\r\napp.use(bodyParser.json());\r\napp.use(cookieParser());\r\napp.use(fileUpload({\r\n    createParentPath: true\r\n}));\r\napp.use('', router)\r\n\r\n//==================================SOCKET IO==================================\r\nconst io = new Server({\r\n    cors: {\r\n        origin: \"http://localhost:3000\"\r\n    }\r\n})\r\nconst socketService = new SocketService()\r\nconst userService = new UserService()\r\n\r\nio.on(\"connection\", (socket) => {\r\n    socket.on('online', async (data) => {\r\n        await socketService.createSocket(data.accountId, socket.id)\r\n    })\r\n\r\n    socket.on('refresh', async (data) => {\r\n        console.log(\"socket id:\", socket.id, \"account id:\", data.accountId)\r\n        await socketService.updateSocket(data.accountId, socket.id)\r\n    })\r\n\r\n    socket.on('liked', async (data) => {\r\n        const socketId = await socketService.findSocket(+data.accountReceiver)\r\n        if (data.accountSent !== data.accountReceiver && socketId != null) {\r\n            io.to(`${socketId.socketId}`).emit(\"getNotification\", {\r\n                message: `${data.displayName} liked your status`\r\n            });\r\n        }\r\n    })\r\n\r\n    socket.on('commented', async (data) => {\r\n        const socketId = await socketService.findSocket(+data.accountReceiver)\r\n        if (data.accountSent !== data.accountReceiver && socketId != null) {\r\n            io.to(`${socketId.socketId}`).emit(\"getNotification\", {\r\n                message: `${data.displayName} commented on your status`\r\n            });\r\n        }\r\n    })\r\n\r\n    socket.on('acceptFriend', async (data) => {\r\n        const socketId = await socketService.findSocket(+data.accountReceiver)\r\n        if (socketId != null) {\r\n            io.to(`${socketId.socketId}`).emit(\"getNotification\", {\r\n                message: `${data.displayName} has accepted your friend request`\r\n            });\r\n        }\r\n    })\r\n\r\n    socket.on('addFriends', async (data) => {\r\n        const socketId = await socketService.findSocket(+data.accountReceiver)\r\n        if (socketId != null) {\r\n            io.to(`${socketId.socketId}`).emit(\"getNotification\", {\r\n                message: `${data.displayName} sent a friend request`\r\n            });\r\n        }\r\n    })\r\n\r\n    socket.on('findUser', async (data) => {\r\n        const listSocket = await socketService.findAllSocket()\r\n        for (let i = 0; i < listSocket.length; i++) {\r\n            if (data.accountId === listSocket[i].accountId) {\r\n                listSocket.splice(i, 1)\r\n                break\r\n            }\r\n        }\r\n        socket.emit('userOnline', {listUser: listSocket});\r\n    })\r\n\r\n    socket.on(\"offline\", async (data) => {\r\n        await socketService.deleteSocket(data.accountId)\r\n    });\r\n\r\n    socket.on('sentMessage', async (data) => {\r\n        await userService.createMessage(data)\r\n        const socketId = await userService.findSocketId(data.accountId, data.timeSent)\r\n        if (socketId != null) {\r\n            io.to(`${socketId.socketId}`).emit(\"getNotification\", {\r\n                message: `sent a message`\r\n            });\r\n        }\r\n    })\r\n\r\n    socket.on(\"disconnect\", () => {\r\n\r\n    })\r\n});\r\n\r\nconst PORT_SOCKET = 5000\r\nio.listen(PORT_SOCKET);\r\n\r\nconst PORT = 3001\r\napp.listen(PORT, () => {\r\n    console.log(`Server is running ${PORT}`)\r\n})
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.ts b/index.ts
+--- a/index.ts	(revision be4f0653bc080a1fac9b95587888effff91dbc31)
++++ b/index.ts	(date 1673510221040)
+@@ -34,7 +34,6 @@
+     })
+ 
+     socket.on('refresh', async (data) => {
+-        console.log("socket id:", socket.id, "account id:", data.accountId)
+         await socketService.updateSocket(data.accountId, socket.id)
+     })
+ 
+Index: src/repo/socketRepo.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {AppDataSource} from \"../data-source\";\r\nimport {Socket} from \"../model/socket\";\r\n\r\nexport class SocketRepo {\r\n    private socketRepo: any\r\n\r\n    constructor() {\r\n        AppDataSource.initialize().then(connection => {\r\n            this.socketRepo = connection.getRepository(Socket)\r\n        })\r\n    }\r\n\r\n    create = async (newData): Promise<string> => {\r\n        await this.socketRepo.save(newData)\r\n        return \"create done\"\r\n    }\r\n    findSocketId = async (accountId) => {\r\n        return await this.socketRepo.findOneBy({accountId: accountId + \"\"})\r\n    }\r\n\r\n    delete = async (socketId: string): Promise<string> => {\r\n        const query = `DELETE\r\n                       FROM socket\r\n                       WHERE socketId = '${socketId}'`\r\n        await this.socketRepo.query(query)\r\n        return \"delete done\"\r\n    }\r\n    updateSocketId = async (accountId, socketId) => {\r\n        let query = `UPDATE socket\r\n                     SET socketId = '${socketId}'\r\n                     WHERE accountId = ${accountId} `\r\n        await this.socketRepo.query(query)\r\n    }\r\n    findAll = async () => {\r\n        return await this.socketRepo.find()\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/repo/socketRepo.ts b/src/repo/socketRepo.ts
+--- a/src/repo/socketRepo.ts	(revision be4f0653bc080a1fac9b95587888effff91dbc31)
++++ b/src/repo/socketRepo.ts	(date 1673510509368)
+@@ -14,6 +14,7 @@
+         await this.socketRepo.save(newData)
+         return "create done"
+     }
++    
+     findSocketId = async (accountId) => {
+         return await this.socketRepo.findOneBy({accountId: accountId + ""})
+     }

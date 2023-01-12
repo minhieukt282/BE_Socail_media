@@ -34,7 +34,6 @@ io.on("connection", (socket) => {
     })
 
     socket.on('refresh', async (data) => {
-        console.log("socket id:", socket.id, "account id:", data.accountId)
         await socketService.updateSocket(data.accountId, socket.id)
     })
 
@@ -48,7 +47,6 @@ io.on("connection", (socket) => {
     })
 
     socket.on('commented', async (data) => {
-        console.log(data)
         const socketId = await socketService.findSocket(+data.accountReceiver)
         if (data.accountSent !== data.accountReceiver && socketId != null) {
             io.to(`${socketId.socketId}`).emit("getNotification", {
