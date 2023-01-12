@@ -1,0 +1,758 @@
+Index: .idea/dataSources/2411c981-5b79-4a3d-9120-dff669d2655d.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources/2411c981-5b79-4a3d-9120-dff669d2655d.xml b/.idea/dataSources/2411c981-5b79-4a3d-9120-dff669d2655d.xml
+--- a/.idea/dataSources/2411c981-5b79-4a3d-9120-dff669d2655d.xml	
++++ b/.idea/dataSources/2411c981-5b79-4a3d-9120-dff669d2655d.xml	
+@@ -993,634 +993,421 @@
+     <collation id="287" parent="1" name="utf8mb4_zh_0900_as_cs">
+       <Charset>utf8mb4</Charset>
+     </collation>
+-    <schema id="288" parent="1" name="clothingweb">
++    <schema id="288" parent="1" name="apidata">
+       <Current>1</Current>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="289" parent="1" name="dbtest">
++    <schema id="289" parent="1" name="banhang">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <schema id="290" parent="1" name="case1">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <schema id="291" parent="1" name="case5">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <schema id="292" parent="1" name="dbbook">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="290" parent="1" name="demo2006">
++    <schema id="293" parent="1" name="dbtest">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="291" parent="1" name="demodata">
++    <schema id="294" parent="1" name="demo2">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="292" parent="1" name="demoorm">
++    <schema id="295" parent="1" name="demo2006">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="293" parent="1" name="demoproject">
++    <schema id="296" parent="1" name="demo_database">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="294" parent="1" name="gymsystem">
++    <schema id="297" parent="1" name="demomodule4">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="295" parent="1" name="information_schema">
++    <schema id="298" parent="1" name="information_schema">
+       <CollationName>utf8mb3_general_ci</CollationName>
+     </schema>
+-    <schema id="296" parent="1" name="library">
++    <schema id="299" parent="1" name="my_database1">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <schema id="300" parent="1" name="mysql">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <schema id="301" parent="1" name="performance_schema">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <schema id="302" parent="1" name="quanlybanhang">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="297" parent="1" name="multishop">
++    <schema id="303" parent="1" name="quanlydiemthi">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="298" parent="1" name="mysql">
++    <schema id="304" parent="1" name="quanlyhanghoa">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="299" parent="1" name="performance_schema">
++    <schema id="305" parent="1" name="quanlyhomestay">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="300" parent="1" name="productmanage">
++    <schema id="306" parent="1" name="quanlysinhvien">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="301" parent="1" name="quizz">
++    <schema id="307" parent="1" name="quanlysinhvien2">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="302" parent="1" name="social_media">
++    <schema id="308" parent="1" name="sakila">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="303" parent="1" name="studentsmanage">
++    <schema id="309" parent="1" name="social_media">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="304" parent="1" name="sys">
++    <schema id="310" parent="1" name="student_management">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="305" parent="1" name="testdata">
++    <schema id="311" parent="1" name="sys">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="306" parent="1" name="world">
++    <schema id="312" parent="1" name="testmd3">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <schema id="307" parent="1" name="yourqueen">
++    <schema id="313" parent="1" name="tl">
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </schema>
+-    <user id="308" parent="1" name="mysql.infoschema">
++    <schema id="314" parent="1" name="world">
++      <CollationName>utf8mb4_0900_ai_ci</CollationName>
++    </schema>
++    <user id="315" parent="1" name="mysql.infoschema">
+       <CanLogin>0</CanLogin>
+       <Host>localhost</Host>
+       <Plugin>caching_sha2_password</Plugin>
+     </user>
+-    <user id="309" parent="1" name="mysql.session">
++    <user id="316" parent="1" name="mysql.session">
+       <CanLogin>0</CanLogin>
+       <Host>localhost</Host>
+       <Plugin>caching_sha2_password</Plugin>
+     </user>
+-    <user id="310" parent="1" name="mysql.sys">
++    <user id="317" parent="1" name="mysql.sys">
+       <CanLogin>0</CanLogin>
+       <Host>localhost</Host>
+       <Plugin>caching_sha2_password</Plugin>
+     </user>
+-    <user id="311" parent="1" name="root">
++    <user id="318" parent="1" name="root">
+       <Host>localhost</Host>
+     </user>
+-    <table id="312" parent="288" name="account">
+-      <Engine>InnoDB</Engine>
+-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+-    </table>
+-    <table id="313" parent="288" name="branch">
+-      <Engine>InnoDB</Engine>
+-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+-    </table>
+-    <table id="314" parent="288" name="gender">
+-      <Engine>InnoDB</Engine>
+-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+-    </table>
+-    <table id="315" parent="288" name="invoice">
+-      <Engine>InnoDB</Engine>
+-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+-    </table>
+-    <table id="316" parent="288" name="product">
+-      <Engine>InnoDB</Engine>
+-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+-    </table>
+-    <table id="317" parent="288" name="style">
+-      <Engine>InnoDB</Engine>
+-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+-    </table>
+-    <table id="318" parent="302" name="account">
++    <table id="319" parent="309" name="account">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <table id="319" parent="302" name="comment">
++    <table id="320" parent="309" name="comment">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <table id="320" parent="302" name="like_post">
++    <table id="321" parent="309" name="like_post">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <table id="321" parent="302" name="notification">
++    <table id="322" parent="309" name="notification">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <table id="322" parent="302" name="post">
++    <table id="323" parent="309" name="post">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <table id="323" parent="302" name="relationship">
++    <table id="324" parent="309" name="relationship">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <table id="324" parent="302" name="socket">
++    <table id="325" parent="309" name="socket">
+       <Engine>InnoDB</Engine>
+       <CollationName>utf8mb4_0900_ai_ci</CollationName>
+     </table>
+-    <column id="325" parent="312" name="id">
+-      <AutoIncrement>2</AutoIncrement>
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>1</Position>
+-    </column>
+-    <column id="326" parent="312" name="username">
+-      <DataType>varchar(20)|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>2</Position>
+-    </column>
+-    <column id="327" parent="312" name="password">
+-      <DataType>varchar(20)|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>3</Position>
+-    </column>
+-    <index id="328" parent="312" name="PRIMARY">
+-      <ColNames>id</ColNames>
+-      <Type>btree</Type>
+-      <Unique>1</Unique>
+-    </index>
+-    <key id="329" parent="312" name="PRIMARY">
+-      <NameSurrogate>1</NameSurrogate>
+-      <Primary>1</Primary>
+-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+-    </key>
+-    <column id="330" parent="313" name="branch_id">
+-      <AutoIncrement>2</AutoIncrement>
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>1</Position>
+-    </column>
+-    <column id="331" parent="313" name="branch_name">
+-      <DataType>varchar(20)|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>2</Position>
+-    </column>
+-    <index id="332" parent="313" name="PRIMARY">
+-      <ColNames>branch_id</ColNames>
+-      <Type>btree</Type>
+-      <Unique>1</Unique>
+-    </index>
+-    <key id="333" parent="313" name="PRIMARY">
+-      <NameSurrogate>1</NameSurrogate>
+-      <Primary>1</Primary>
+-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+-    </key>
+-    <column id="334" parent="314" name="gender_id">
+-      <AutoIncrement>2</AutoIncrement>
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>1</Position>
+-    </column>
+-    <column id="335" parent="314" name="gender_name">
+-      <DataType>varchar(20)|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>2</Position>
+-    </column>
+-    <index id="336" parent="314" name="PRIMARY">
+-      <ColNames>gender_id</ColNames>
+-      <Type>btree</Type>
+-      <Unique>1</Unique>
+-    </index>
+-    <key id="337" parent="314" name="PRIMARY">
+-      <NameSurrogate>1</NameSurrogate>
+-      <Primary>1</Primary>
+-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+-    </key>
+-    <column id="338" parent="315" name="order_id">
+-      <AutoIncrement>1</AutoIncrement>
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>1</Position>
+-    </column>
+-    <column id="339" parent="315" name="product_id">
+-      <DataType>int|0s</DataType>
+-      <Position>2</Position>
+-    </column>
+-    <column id="340" parent="315" name="quantity">
+-      <DataType>int|0s</DataType>
+-      <Position>3</Position>
+-    </column>
+-    <column id="341" parent="315" name="account_id">
+-      <DataType>int|0s</DataType>
+-      <Position>4</Position>
+-    </column>
+-    <column id="342" parent="315" name="time">
+-      <DataType>date|0s</DataType>
+-      <DefaultExpression>(curdate())</DefaultExpression>
+-      <Position>5</Position>
+-    </column>
+-    <foreign-key id="343" parent="315" name="invoice_ibfk_1">
+-      <ColNames>product_id</ColNames>
+-      <RefColNames>product_id</RefColNames>
+-      <RefTableName>product</RefTableName>
+-    </foreign-key>
+-    <foreign-key id="344" parent="315" name="invoice_ibfk_2">
+-      <ColNames>account_id</ColNames>
+-      <RefColNames>id</RefColNames>
+-      <RefTableName>account</RefTableName>
+-    </foreign-key>
+-    <index id="345" parent="315" name="PRIMARY">
+-      <ColNames>order_id</ColNames>
+-      <Type>btree</Type>
+-      <Unique>1</Unique>
+-    </index>
+-    <index id="346" parent="315" name="product_id">
+-      <ColNames>product_id</ColNames>
+-      <Type>btree</Type>
+-    </index>
+-    <index id="347" parent="315" name="account_id">
+-      <ColNames>account_id</ColNames>
+-      <Type>btree</Type>
+-    </index>
+-    <key id="348" parent="315" name="PRIMARY">
+-      <NameSurrogate>1</NameSurrogate>
+-      <Primary>1</Primary>
+-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+-    </key>
+-    <column id="349" parent="316" name="product_id">
+-      <AutoIncrement>16</AutoIncrement>
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>1</Position>
+-    </column>
+-    <column id="350" parent="316" name="product_name">
+-      <DataType>varchar(255)|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>2</Position>
+-    </column>
+-    <column id="351" parent="316" name="gender_id">
+-      <DataType>int|0s</DataType>
+-      <Position>3</Position>
+-    </column>
+-    <column id="352" parent="316" name="style_id">
+-      <DataType>int|0s</DataType>
+-      <Position>4</Position>
+-    </column>
+-    <column id="353" parent="316" name="branch_id">
+-      <DataType>int|0s</DataType>
+-      <Position>5</Position>
+-    </column>
+-    <column id="354" parent="316" name="price">
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>6</Position>
+-    </column>
+-    <column id="355" parent="316" name="timeUpdate">
+-      <DataType>date|0s</DataType>
+-      <DefaultExpression>(curdate())</DefaultExpression>
+-      <Position>7</Position>
+-    </column>
+-    <column id="356" parent="316" name="image">
+-      <DataType>text|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>8</Position>
+-    </column>
+-    <column id="357" parent="316" name="description">
+-      <DataType>text|0s</DataType>
+-      <Position>9</Position>
+-    </column>
+-    <foreign-key id="358" parent="316" name="product_ibfk_1">
+-      <ColNames>gender_id</ColNames>
+-      <RefColNames>gender_id</RefColNames>
+-      <RefTableName>gender</RefTableName>
+-    </foreign-key>
+-    <foreign-key id="359" parent="316" name="product_ibfk_2">
+-      <ColNames>style_id</ColNames>
+-      <RefColNames>style_id</RefColNames>
+-      <RefTableName>style</RefTableName>
+-    </foreign-key>
+-    <foreign-key id="360" parent="316" name="product_ibfk_3">
+-      <ColNames>branch_id</ColNames>
+-      <RefColNames>branch_id</RefColNames>
+-      <RefTableName>branch</RefTableName>
+-    </foreign-key>
+-    <index id="361" parent="316" name="PRIMARY">
+-      <ColNames>product_id</ColNames>
+-      <Type>btree</Type>
+-      <Unique>1</Unique>
+-    </index>
+-    <index id="362" parent="316" name="gender_id">
+-      <ColNames>gender_id</ColNames>
+-      <Type>btree</Type>
+-    </index>
+-    <index id="363" parent="316" name="style_id">
+-      <ColNames>style_id</ColNames>
+-      <Type>btree</Type>
+-    </index>
+-    <index id="364" parent="316" name="branch_id">
+-      <ColNames>branch_id</ColNames>
+-      <Type>btree</Type>
+-    </index>
+-    <key id="365" parent="316" name="PRIMARY">
+-      <NameSurrogate>1</NameSurrogate>
+-      <Primary>1</Primary>
+-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+-    </key>
+-    <column id="366" parent="317" name="style_id">
+-      <AutoIncrement>2</AutoIncrement>
+-      <DataType>int|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>1</Position>
+-    </column>
+-    <column id="367" parent="317" name="style_name">
+-      <DataType>varchar(20)|0s</DataType>
+-      <NotNull>1</NotNull>
+-      <Position>2</Position>
+-    </column>
+-    <index id="368" parent="317" name="PRIMARY">
+-      <ColNames>style_id</ColNames>
+-      <Type>btree</Type>
+-      <Unique>1</Unique>
+-    </index>
+-    <key id="369" parent="317" name="PRIMARY">
+-      <NameSurrogate>1</NameSurrogate>
+-      <Primary>1</Primary>
+-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+-    </key>
+-    <column id="370" parent="318" name="accountId">
++    <column id="326" parent="319" name="accountId">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="371" parent="318" name="username">
++    <column id="327" parent="319" name="username">
+       <DataType>varchar(255)|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="372" parent="318" name="password">
++    <column id="328" parent="319" name="password">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <column id="373" parent="318" name="displayName">
++    <column id="329" parent="319" name="displayName">
+       <DataType>varchar(255)|0s</DataType>
+       <DefaultExpression>&apos;New Username&apos;</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>4</Position>
+     </column>
+-    <column id="374" parent="318" name="img">
++    <column id="330" parent="319" name="img">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>5</Position>
+     </column>
+-    <column id="375" parent="318" name="birthday">
++    <column id="331" parent="319" name="birthday">
+       <DataType>date|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>6</Position>
+     </column>
+-    <column id="376" parent="318" name="location">
++    <column id="332" parent="319" name="location">
+       <DataType>varchar(255)|0s</DataType>
+       <DefaultExpression>&apos;Hanoi&apos;</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>7</Position>
+     </column>
+-    <column id="377" parent="318" name="status">
++    <column id="333" parent="319" name="status">
+       <DataType>tinyint|0s</DataType>
+       <DefaultExpression>0</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>8</Position>
+     </column>
+-    <index id="378" parent="318" name="PRIMARY">
++    <index id="334" parent="319" name="PRIMARY">
+       <ColNames>accountId</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <key id="379" parent="318" name="PRIMARY">
++    <key id="335" parent="319" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+     </key>
+-    <column id="380" parent="319" name="commentId">
++    <column id="336" parent="320" name="commentId">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="381" parent="319" name="postId">
++    <column id="337" parent="320" name="postId">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="382" parent="319" name="accountId">
++    <column id="338" parent="320" name="accountId">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <column id="383" parent="319" name="content">
++    <column id="339" parent="320" name="content">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>4</Position>
+     </column>
+-    <column id="384" parent="319" name="timeUpdate">
++    <column id="340" parent="320" name="timeUpdate">
+       <DataType>timestamp|0s</DataType>
+       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>5</Position>
+     </column>
+-    <index id="385" parent="319" name="PRIMARY">
++    <index id="341" parent="320" name="PRIMARY">
+       <ColNames>commentId</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <key id="386" parent="319" name="PRIMARY">
++    <key id="342" parent="320" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+     </key>
+-    <column id="387" parent="320" name="likeId">
++    <column id="343" parent="321" name="likeId">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="388" parent="320" name="accountId">
++    <column id="344" parent="321" name="accountId">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="389" parent="320" name="displayName">
++    <column id="345" parent="321" name="displayName">
+       <DataType>varchar(255)|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <column id="390" parent="320" name="postPostId">
++    <column id="346" parent="321" name="postPostId">
+       <DataType>bigint|0s</DataType>
+       <Position>4</Position>
+     </column>
+-    <foreign-key id="391" parent="320" name="FK_09b2088bc6bd91ab7a242ad7f23">
++    <foreign-key id="347" parent="321" name="FK_09b2088bc6bd91ab7a242ad7f23">
+       <ColNames>postPostId</ColNames>
+       <RefColNames>postId</RefColNames>
+       <RefTableName>post</RefTableName>
+     </foreign-key>
+-    <index id="392" parent="320" name="PRIMARY">
++    <index id="348" parent="321" name="PRIMARY">
+       <ColNames>likeId</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <index id="393" parent="320" name="FK_09b2088bc6bd91ab7a242ad7f23">
++    <index id="349" parent="321" name="FK_09b2088bc6bd91ab7a242ad7f23">
+       <ColNames>postPostId</ColNames>
+       <Type>btree</Type>
+     </index>
+-    <key id="394" parent="320" name="PRIMARY">
++    <key id="350" parent="321" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+     </key>
+-    <column id="395" parent="321" name="notificationId">
++    <column id="351" parent="322" name="notificationId">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="396" parent="321" name="displayName">
++    <column id="352" parent="322" name="displayName">
+       <DataType>varchar(255)|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="397" parent="321" name="accountSent">
++    <column id="353" parent="322" name="accountSent">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <column id="398" parent="321" name="accountReceiver">
++    <column id="354" parent="322" name="accountReceiver">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>4</Position>
+     </column>
+-    <column id="399" parent="321" name="postId">
++    <column id="355" parent="322" name="postId">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>5</Position>
+     </column>
+-    <column id="400" parent="321" name="content">
++    <column id="356" parent="322" name="content">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>6</Position>
+     </column>
+-    <column id="401" parent="321" name="time">
++    <column id="357" parent="322" name="time">
+       <DataType>timestamp|0s</DataType>
+       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>7</Position>
+     </column>
+-    <column id="402" parent="321" name="type">
++    <column id="358" parent="322" name="type">
+       <DataType>varchar(255)|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>8</Position>
+     </column>
+-    <index id="403" parent="321" name="PRIMARY">
++    <index id="359" parent="322" name="PRIMARY">
+       <ColNames>notificationId</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <key id="404" parent="321" name="PRIMARY">
++    <key id="360" parent="322" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+     </key>
+-    <column id="405" parent="322" name="postId">
++    <column id="361" parent="323" name="postId">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="406" parent="322" name="img">
++    <column id="362" parent="323" name="img">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="407" parent="322" name="content">
++    <column id="363" parent="323" name="content">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <column id="408" parent="322" name="timeUpdate">
++    <column id="364" parent="323" name="timeUpdate">
+       <DataType>timestamp|0s</DataType>
+       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>4</Position>
+     </column>
+-    <column id="409" parent="322" name="status">
++    <column id="365" parent="323" name="status">
+       <DataType>varchar(255)|0s</DataType>
+       <DefaultExpression>&apos;public&apos;</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>5</Position>
+     </column>
+-    <column id="410" parent="322" name="accountAccountId">
++    <column id="366" parent="323" name="accountAccountId">
+       <DataType>bigint|0s</DataType>
+       <Position>6</Position>
+     </column>
+-    <index id="411" parent="322" name="PRIMARY">
++    <foreign-key id="367" parent="323" name="FK_8cb9e86ecf0b3c39425541f1054">
++      <ColNames>accountAccountId</ColNames>
++      <RefColNames>accountId</RefColNames>
++      <RefTableName>account</RefTableName>
++    </foreign-key>
++    <index id="368" parent="323" name="PRIMARY">
+       <ColNames>postId</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <key id="412" parent="322" name="PRIMARY">
++    <index id="369" parent="323" name="FK_8cb9e86ecf0b3c39425541f1054">
++      <ColNames>accountAccountId</ColNames>
++      <Type>btree</Type>
++    </index>
++    <key id="370" parent="323" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+     </key>
+-    <column id="413" parent="323" name="relationshipId">
++    <column id="371" parent="324" name="relationshipId">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="414" parent="323" name="accountReq">
++    <column id="372" parent="324" name="accountReq">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="415" parent="323" name="accountRes">
++    <column id="373" parent="324" name="accountRes">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <column id="416" parent="323" name="isFriend">
++    <column id="374" parent="324" name="isFriend">
+       <DataType>tinyint|0s</DataType>
+       <DefaultExpression>0</DefaultExpression>
+       <NotNull>1</NotNull>
+       <Position>4</Position>
+     </column>
+-    <index id="417" parent="323" name="PRIMARY">
++    <index id="375" parent="324" name="PRIMARY">
+       <ColNames>relationshipId</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <key id="418" parent="323" name="PRIMARY">
++    <key id="376" parent="324" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+     </key>
+-    <column id="419" parent="324" name="id">
++    <column id="377" parent="325" name="id">
+       <AutoIncrement>1</AutoIncrement>
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>1</Position>
+     </column>
+-    <column id="420" parent="324" name="accountId">
++    <column id="378" parent="325" name="accountId">
+       <DataType>bigint|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>2</Position>
+     </column>
+-    <column id="421" parent="324" name="socketId">
++    <column id="379" parent="325" name="socketId">
+       <DataType>text|0s</DataType>
+       <NotNull>1</NotNull>
+       <Position>3</Position>
+     </column>
+-    <index id="422" parent="324" name="PRIMARY">
++    <index id="380" parent="325" name="PRIMARY">
+       <ColNames>id</ColNames>
+       <Type>btree</Type>
+       <Unique>1</Unique>
+     </index>
+-    <key id="423" parent="324" name="PRIMARY">
++    <key id="381" parent="325" name="PRIMARY">
+       <NameSurrogate>1</NameSurrogate>
+       <Primary>1</Primary>
+       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

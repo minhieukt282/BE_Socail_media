@@ -78,14 +78,12 @@ export class PostRepo {
 
     searchPost = async (searchKey: string): Promise<string> => {
         return await this.postRepo.find({
-            content: Like(`%${searchKey}%`),
-            order: {
-                timeUpdate: "DESC"
-            },
+            where: {content: Like(`%${searchKey}%`)},
             relations: {
                 likes: true,
-                account: true,
-            },
+                comments: true,
+                account: true
+            }
         })
     }
 }

@@ -260,6 +260,17 @@ export class UserService {
         }
     }
 
+    updateAccount = async (accountId, data: AccountRequest): Promise<ResponseBody> => {
+        const message = await this.accountRepo.update(accountId, data)
+        const dataUpdate = await this.accountRepo.findByIdUpdate(accountId)
+        return {
+            code: 200,
+            message: message,
+            data: dataUpdate
+        }
+    }
+
+
     search = async (searchKey: string): Promise<ResponseBody> => {
         const accounts = await this.accountRepo.searchAccount(searchKey)
         const posts = await this.postRepo.searchPost(searchKey)
