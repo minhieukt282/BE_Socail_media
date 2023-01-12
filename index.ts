@@ -48,12 +48,16 @@ io.on("connection", (socket) => {
     })
 
     socket.on('commented', async (data) => {
+        console.log(data)
         const socketId = await socketService.findSocket(+data.accountReceiver)
         if (data.accountSent !== data.accountReceiver && socketId != null) {
             io.to(`${socketId.socketId}`).emit("getNotification", {
                 message: `${data.displayName} commented on your status`
             });
         }
+        io.emit("allComment", {
+            message: "sent all client"
+        })
     })
 
     socket.on('acceptFriend', async (data) => {
