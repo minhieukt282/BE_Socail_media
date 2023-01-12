@@ -48,7 +48,6 @@ io.on("connection", (socket) => {
     })
 
     socket.on('commented', async (data) => {
-        console.log(data)
         const socketId = await socketService.findSocket(+data.accountReceiver)
         if (data.accountSent !== data.accountReceiver && socketId != null) {
             io.to(`${socketId.socketId}`).emit("getNotification", {
@@ -111,7 +110,7 @@ io.on("connection", (socket) => {
 const PORT_SOCKET = 5000
 io.listen(PORT_SOCKET);
 
-const PORT = 3001
+const PORT = 8080
 app.listen(PORT, () => {
     console.log(`Server is running ${PORT}`)
 })
