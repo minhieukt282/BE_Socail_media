@@ -109,7 +109,7 @@ io.on("connection", (socket) => {
 const PORT_SOCKET = 5000
 io.listen(PORT_SOCKET);
 
-const PORT = 3001
+const PORT = 8080
 app.listen(PORT, () => {
     console.log(`Server is running ${PORT}`)
 })
