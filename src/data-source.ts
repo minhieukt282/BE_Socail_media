@@ -10,12 +10,12 @@ import {Message} from "./model/message";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: "127.0.0.1",
+    host: "localhost",
     port: 3306,
-    username: "root",
-    password: "123456",
-    database: "social_media",
-    synchronize: true,
+    username: "anhnbt",
+    password: "KhoaiTay@2019",
+    database: "social_network",
+    synchronize: false,
     entities: [
         Account,
         Comment,

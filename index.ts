@@ -22,7 +22,7 @@ app.use('', router)
 //==================================SOCKET IO==================================
 const io = new Server({
     cors: {
-        origin: "http://localhost:3000"
+        origin: ["http://localhost:3000", "http://anhnbt.com:3000"]
     }
 })
 const socketService = new SocketService()
@@ -110,7 +110,7 @@ io.on("connection", (socket) => {
 const PORT_SOCKET = 5000
 io.listen(PORT_SOCKET);
 
-const PORT = 8080
+const PORT = 8081
 app.listen(PORT, () => {
     console.log(`Server is running ${PORT}`)
 })
