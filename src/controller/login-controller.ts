@@ -2,24 +2,28 @@ import {LoginService} from "../service/login-service";
 import {Request, Response} from "express";
 
 export class LoginController {
-    private loginController: LoginService
+    private loginService: LoginService
 
     constructor() {
-        this.loginController = new LoginService()
+        this.loginService = new LoginService()
     }
 
-    login = async (req: Request, res: Response) => {
-        let status = await this.loginController.login(req.body)
-        return res.status(status.code).json({message: status.message})
+    login = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.loginService.login(req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 
-    register = async (req: Request, res: Response) => {
-        let status = await this.loginController.register(req.body)
-        return res.status(status.code).json({message: status.message})
-    }
-    logout = async (req: Request, res: Response) => {
-        let status = await this.loginController.logout(req.body)
-        return res.status(status.code).json({message: status.message})
+    register = async (req: Request, res: Response): Promise<void> => {
+        try {
+            let respBody = await this.loginService.register(req.body)
+            res.status(respBody.code).json(respBody)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
     }
 }
 

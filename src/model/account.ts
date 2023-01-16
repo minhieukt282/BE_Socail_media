@@ -1,6 +1,7 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Post} from "./post";
 
-@Entity({name: 'account'})
+@Entity({name: "account"})
 export class Account {
     @PrimaryGeneratedColumn({type: 'bigint'})
     public readonly accountId: number
@@ -8,14 +9,17 @@ export class Account {
     public username: string
     @Column({type: 'text'})
     public password: string
-    @Column({type: "varchar", default: 'username'})
-    public displayName : string
+    @Column({type: "varchar", default: 'New Username'})
+    public displayName: string
     @Column({type: "text"})
-    public img : string
+    public img: string
     @Column({type: "date"})
-    public birthday : Date
+    public birthday: Date
     @Column({type: "varchar", default: "Hanoi"})
-    public location : string
+    public location: string
     @Column({type: "boolean", default: false})
-    public status : boolean
+    public status: boolean
+
+    @OneToMany(() => Post, (post) => post.account)
+    posts: Post[]
 }
