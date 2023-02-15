@@ -14,6 +14,12 @@ export class RelationshipRepo {
         return await this.relationshipRepo.find()
     }
 
+    findByRelationshipId = async (relationshipId: number) => {
+        return await this.relationshipRepo.find({
+            where: {relationshipId: relationshipId}
+        })
+    }
+
     findByAccount = async (accountId: number) => {
         const query = `select a.accountId,
                               a.username,
