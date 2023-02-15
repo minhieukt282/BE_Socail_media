@@ -322,15 +322,6 @@ export class UserService {
         return await this.socketRepo.findSocketId(findAccount)
     }
 
-    updateAccount = async (accountId, data: AccountRequest): Promise<ResponseBody> => {
-        const message = await this.accountRepo.update(accountId, data)
-        const dataUpdate = await this.accountRepo.findByIdUpdate(accountId)
-        return {
-            code: 200,
-            message: message,
-            data: dataUpdate
-        }
-    }
 
 
 }

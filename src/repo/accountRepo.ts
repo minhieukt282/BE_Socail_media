@@ -50,11 +50,4 @@ export class AccountRepo {
         return await this.accountRepo.query(query)
     }
 
-    findByIdUpdate = async (accountId: number): Promise<AccountRepo> => {
-        let query = `
-            select *from account
-            where accountId = ${accountId};
-        `
-        return await this.accountRepo.query(query)
-    }
 }
