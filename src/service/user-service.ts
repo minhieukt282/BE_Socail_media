@@ -161,10 +161,10 @@ export class UserService {
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
         if (dataNotice.type === "liked") {
-            dataNotice.content = `${dataNotice.type} your status`
+            dataNotice.content = ` ${dataNotice.type} your status`
         }
         if (dataNotice.type === "commented") {
-            dataNotice.content = `${dataNotice.type} on your status`
+            dataNotice.content = ` ${dataNotice.type} on your status`
         }
         if (dataNotice.type === "friends") {
             dataNotice.content = ` has accepted your friend request`
