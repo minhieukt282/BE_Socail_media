@@ -14,6 +14,12 @@ export class RelationshipRepo {
         return await this.relationshipRepo.find()
     }
 
+    findByRelationshipId = async (relationshipId: number) => {
+        return await this.relationshipRepo.find({
+            where: {relationshipId: relationshipId}
+        })
+    }
+
     findByAccount = async (accountId: number) => {
         const query = `select a.accountId,
                               a.username,
@@ -27,7 +33,8 @@ export class RelationshipRepo {
                        from relationship as r
                                 join account a on a.accountId = r.accountReq or a.accountId = r.accountRes
                        where isFriend = true
-                         and (r.accountRes = ${accountId} or r.accountReq = ${accountId})`
+                         and (r.accountRes = ${accountId} or r.accountReq = ${accountId})
+                       group by a.accountId`
         return await this.relationshipRepo.query(query)
     }
 

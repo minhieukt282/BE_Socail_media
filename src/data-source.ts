@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
     port: 3306,
     username: "anhnbt",
     password: "KhoaiTay@2019",
-    database: "social_network",
+    database: "social_media",
     synchronize: false,
     entities: [
         Account,

@@ -93,10 +93,9 @@ io.on("connection", (socket) => {
     });
 
     socket.on('sentMessage', async (data) => {
-        await userService.createMessage(data)
-        const socketId = await userService.findSocketId(data.accountId, data.timeSent)
-        if (socketId != null) {
-            io.to(`${socketId.socketId}`).emit("getNotification", {
+        const socket = await userService.findSocketId(data.roomId, data.accountId)
+        if (socket != null) {
+            io.to(`${socket.socketId}`).emit("getNotification", {
                 message: `sent a message`
             });
         }
