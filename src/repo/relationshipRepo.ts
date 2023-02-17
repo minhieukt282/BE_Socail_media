@@ -33,7 +33,8 @@ export class RelationshipRepo {
                        from relationship as r
                                 join account a on a.accountId = r.accountReq or a.accountId = r.accountRes
                        where isFriend = true
-                         and (r.accountRes = ${accountId} or r.accountReq = ${accountId})`
+                         and (r.accountRes = ${accountId} or r.accountReq = ${accountId})
+                       group by a.accountId`
         return await this.relationshipRepo.query(query)
     }
 
