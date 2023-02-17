@@ -161,10 +161,10 @@ export class UserService {
 
     createNotification = async (dataNotice: NoticeRequest): Promise<ResponseBody> => {
         if (dataNotice.type === "liked") {
-            dataNotice.content = `${dataNotice.type} your status`
+            dataNotice.content = ` ${dataNotice.type} your status`
         }
         if (dataNotice.type === "commented") {
-            dataNotice.content = `${dataNotice.type} on your status`
+            dataNotice.content = ` ${dataNotice.type} on your status`
         }
         if (dataNotice.type === "friends") {
             dataNotice.content = ` has accepted your friend request`
@@ -309,17 +309,13 @@ export class UserService {
         }
     }
 
-    findSocketId = async (accountId, timeSent) => {
-        const message = await this.messageRepo.findByAccountId(accountId, timeSent)
-        const listAccount = await this.messageRepo.findByRoomId(message[0].roomId)
-        let findAccount
-        for (let i = 0; i < listAccount.length; i++) {
-            if (listAccount[i].accountId != accountId) {
-                findAccount = listAccount[i].accountId
-                break
-            }
+    findSocketId = async (relationshipId, accountReq) => {
+        const relationship = await this.relationshipRepo.findByRelationshipId(relationshipId)
+        let accountRes = relationship[0].accountRes
+        if (accountRes === accountReq) {
+            accountRes = relationship[0].accountReq
         }
-        return await this.socketRepo.findSocketId(findAccount)
+        return await this.socketRepo.findSocketId(accountRes)
     }
 
 
