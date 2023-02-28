@@ -238,6 +238,16 @@ export class UserController {
             res.status(500).json(err.message)
         }
     }
+
+    //
+    // createComment = async (req: Request, res: Response): Promise<void> => {
+    //     try {
+    //         let respBody = await this.userService.createComment(req.body)
+    //         res.status(respBody.code).json(respBody)
+    //     } catch (err) {
+    //         res.status(500).json(err.message)
+    //     }
+    // }
 }
 
 export default new UserController()

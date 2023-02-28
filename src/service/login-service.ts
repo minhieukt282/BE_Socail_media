@@ -67,7 +67,7 @@ export class LoginService {
             } else {
                 return {
                     code: 200,
-                    message: "Wrong password"
+                    message: "Wrong password or Username"
                 }
             }
         }
